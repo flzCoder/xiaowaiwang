@@ -1,28 +1,27 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import actions from './actions'
-import mutations from './mutations'
-import getters from './getters'
 
 Vue.use(Vuex)
+
+import { fetchItem } from '../api/news'
 
 export function createStore () {
   return new Vuex.Store({
     state: {
-      activeType: null,
-      itemsPerPage: 20,
-      items: {/* [id: number]: Item */},
-      users: {/* [id: string]: User */},
-      lists: {
-        top: [/* number */],
-        new: [],
-        show: [],
-        ask: [],
-        job: []
+      items: {}
+    },
+    actions: {
+      fetchItem ({ commit }, id) {
+        return fetchItem(id).then(item => {
+          item = item.data
+          commit('setItem', { id, item })
+        })
       }
     },
-    actions,
-    mutations,
-    getters
+    mutations: {
+      setItem (state, { id, item }) {
+        Vue.set(state.items, id, item)
+      }
+    }
   })
 }

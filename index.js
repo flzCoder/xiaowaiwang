@@ -5,6 +5,7 @@ const express = require('express')
 const favicon = require('serve-favicon')
 const compression = require('compression')
 const microcache = require('route-cache')
+const recommend = require('./server/recommend')
 const resolve = file => path.resolve(__dirname, file)
 const { createBundleRenderer } = require('vue-server-renderer')
 
@@ -69,6 +70,7 @@ app.use('/dist', serve('./dist', true))
 app.use('/public', serve('./public', true))
 app.use('/manifest.json', serve('./manifest.json', true))
 app.use('/service-worker.js', serve('./dist/service-worker.js'))
+app.get('/getRecommend', recommend)
 
 // since this app has no user-specific content, every page is micro-cacheable.
 // if your app involves user-specific content, you need to implement custom
@@ -116,7 +118,12 @@ app.get('*', isProd ? render : (req, res) => {
   readyPromise.then(() => render(req, res))
 })
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 8088
 app.listen(port, () => {
   console.log(`server started at localhost:${port}`)
 })
+
+process.on('unhandledRejection', error => {
+  // Will print "unhandledRejection err is not defined"
+  console.log('unhandledRejection', error.message);
+});
