@@ -30,6 +30,8 @@ export default {
 <style lang="stylus">
   #app {
     color: red;
+    width:980px;
+    margin:0 auto;
   }
   .router-link-active li{
     text-decoration: underline;

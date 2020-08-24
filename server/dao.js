@@ -1,7 +1,7 @@
 var mysql = require('mysql');
 
 module.exports = {
-  sqlQuery: function() {
+  sqlQuery: function(query) {
     var connection = mysql.createConnection({
       host: '127.0.0.1',
       port: '3306',
@@ -17,7 +17,7 @@ module.exports = {
           connection.end();
           reject();
         }
-        connection.query('select * from wap3g_news limit 10;', function (error, results, fields) {
+        connection.query(query, (error, results, fields) => {
           if (error) {
             throw error;
             connection.end();

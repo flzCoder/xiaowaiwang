@@ -10,7 +10,7 @@ import axios from 'axios'
 
 export default {
   asyncData ({ store, route }) {
-    return store.dispatch('fetchItem', route.name)
+    return store.dispatch('fetchRecommend', route.name)
   },
   computed: {
     list () {

@@ -1,21 +1,11 @@
 <template>
-  <div class="index">
-    首页新闻1<br />
-    首页新闻1<br />
-    首页新闻1<br />
-    首页新闻1<br />
-    首页新闻1<br />
-    首页新闻1<br />
-    首页新闻1<br />
-    首页新闻1<br />
-    首页新闻1<br />
-    首页新闻1<br />
-    首页新闻1<br />
-    首页新闻1<br />
-  </div>
+  <ul class="index">
+    <listItem :item='item' :key='i' v-for='(item, i) in list' />
+  </ul>
 </template>
 
 <script>
+import listItem from '../components/listItem.vue'
 
 export default {
   data() {
@@ -24,10 +14,16 @@ export default {
     }
   },
   asyncData ({ store, route }) {
-    return new Promise(function(resolve, reject) {
-      resolve()
-    })
+    return store.dispatch('fetchMain', route.name)
   },
+  computed: {
+    list () {
+      return this.$store.state.items[this.$route.name].res;
+    }
+  },
+  components: {
+    listItem
+  }
 }
 </script>
 
