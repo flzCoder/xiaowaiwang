@@ -9,6 +9,9 @@ import listItem from '../components/listItem.vue'
 import axios from 'axios'
 
 export default {
+  title () {
+    return this.title
+  },
   asyncData ({ store, route }) {
     return store.dispatch('fetchRecommend', route.name)
   },
@@ -22,14 +25,7 @@ export default {
   },
   data() {
     return {
-      kk: 'kk',
-      list11: [
-        {name:'标题1',con:'看天下看天下看天下看天下看天下看天下'},
-        {name:'标题1',con:'看天下看天下看天下看天下看天下看天下'},
-        {name:'标题1',con:'看天下看天下看天下看天下看天下看天下'},
-        {name:'标题1',con:'看天下看天下看天下看天下看天下看天下'},
-        {name:'标题1',con:'看天下看天下看天下看天下看天下看天下'}
-      ]
+      title: '推荐'
     }
   }
 }

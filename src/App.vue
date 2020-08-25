@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    网易手机网
+    <h3>网易手机网</h3>
     <ul class='nav'>
       <router-link :to="'./index'"><li>首页</li></router-link>
       <router-link :to="'./recommend'"><li>推荐</li></router-link>
@@ -33,13 +33,16 @@ export default {
     width:980px;
     margin:0 auto;
   }
+
+  h3
+   text-align:center
+
   .router-link-active li{
     text-decoration: underline;
     color: red;
   }
   .view {
     color: #000;
-    padding-left: 66px;
   }
   ul {list-style:none;}
   .nav {overflow:hidden;}

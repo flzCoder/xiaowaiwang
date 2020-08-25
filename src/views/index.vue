@@ -8,9 +8,12 @@
 import listItem from '../components/listItem.vue'
 
 export default {
+  title () {
+    return this.title
+  },
   data() {
     return {
-      ll: 'll'
+      title: '首页'
     }
   },
   asyncData ({ store, route }) {

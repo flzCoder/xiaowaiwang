@@ -11,24 +11,25 @@
 
 <script>
 export default {
-  name: 'listItem',
+  name: 'news-item',
   props: ['item'],
+  serverCacheKey: props => props.item.id + '::' + props.item.update_time,
   data() {
     return {
-      cc: '这是个新闻'
+      title: '子孙标题'
     }
   },
-  methods: {
-    dd() {
-      return "nb";
-    }
+  created() {
   }
 }
 </script>
 
 <style lang="stylus">
 .news-item {
-  position:relative;
+  position: relative;
+  width:914px;
+  height:117px;
+  margin-bottom: 18px;
 }
 .left {
   position:absolute;
