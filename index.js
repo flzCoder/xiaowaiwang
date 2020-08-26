@@ -103,7 +103,11 @@ function render (req, res) {
 
   const context = {
     title: '手机网易网', // default title
-    url: req.url
+    url: req.url,
+    metas: `
+        <meta name="keyword" content="vue,ssr">
+        <meta name="description" content="vue srr demo">
+    `
   }
   renderer.renderToString(context, (err, html) => {
     if (err) {
