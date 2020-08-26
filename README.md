@@ -1,6 +1,10 @@
 # vue-ssr
-
-mysql express vue-ssr vuex vue-router webpack
+mysql (5.5)
+express
+vue-ssr
+vuex
+vue-router
+webpack
 
 **Requires Node.js 7+**
 
@@ -8,8 +12,13 @@ mysql express vue-ssr vuex vue-router webpack
 # install dependencies
 npm install # or yarn
 
+安装mysql
+导入数据库文件
+./sync_db.sh
+
 # serve in dev mode, with hot reload at localhost:8080
-npm run dev
+./start.sh
+本地8088端口
 
 # build for production
 npm run build
