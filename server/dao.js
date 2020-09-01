@@ -3,10 +3,10 @@ var mysql = require('mysql');
 module.exports = {
   sqlQuery: function(query) {
     var connection = mysql.createConnection({
-      host: '127.0.0.1',
+      host: '47.93.34.232',
       port: '3306',
       user: 'root',
-      password: '111111',
+      password: 'root',
       database: 'netease_news',
     });
 
