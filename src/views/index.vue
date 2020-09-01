@@ -1,6 +1,7 @@
 <template>
   <ul class="index">
-    <listItem :item='item' :key='i' v-for='(item, i) in list' />
+    首页的内容
+    <!-- <listItem :item='item' :key='i' v-for='(item, i) in list' /> -->
   </ul>
 </template>
 
@@ -16,12 +17,14 @@ export default {
       title: '首页'
     }
   },
-  asyncData ({ store, route }) {
+  asyncData11 ({ store, route }) {
     return store.dispatch('fetchMain', route.name)
   },
+  asyncData () {},
   computed: {
-    list () {
-      return this.$store.state.items[this.$route.name].res;
+    list11 () {
+      //return this.$store.state.items[this.$route.name].res;
+      return 111;
     }
   },
   components: {
