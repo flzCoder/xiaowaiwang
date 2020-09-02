@@ -5,6 +5,9 @@ const express = require('express')
 const favicon = require('serve-favicon')
 const compression = require('compression')
 const microcache = require('route-cache')
+const bodyParser = require('body-parser')
+const postMessageService = require('./server/message')
+const getMessageService = require('./server/getmessage')
 const indexService = require('./server/index')
 const recommend = require('./server/recommend')
 const resolve = file => path.resolve(__dirname, file)
@@ -65,6 +68,8 @@ const serve = (path, cache) => express.static(resolve(path), {
   maxAge: cache && isProd ? 1000 * 60 * 60 * 24 * 30 : 0
 })
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extend:false}))
 app.use(compression({ threshold: 0 }))
 app.use(favicon('./public/logo.png'))
 app.use('/dist', serve('./dist', true))
@@ -73,6 +78,8 @@ app.use('/manifest.json', serve('./manifest.json', true))
 app.use('/service-worker.js', serve('./dist/service-worker.js'))
 app.get('/getRecommend', recommend)
 app.get('/getIndex', indexService)
+app.get('/getMessage', getMessageService)
+app.post('/postMessage', postMessageService)
 
 // since this app has no user-specific content, every page is micro-cacheable.
 // if your app involves user-specific content, you need to implement custom

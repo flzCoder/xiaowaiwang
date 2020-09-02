@@ -16,3 +16,6 @@ winpty mysql -uroot -p111111
 show variables like '%char%';
 show charset
 charset gbk
+
+
+INSERT INTO wap3g_comment ( name, pic, program ) VALUES ( '默认小王', '','' );

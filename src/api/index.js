@@ -8,10 +8,18 @@ async function getRecommend() {
   return await axios.get('http://47.93.34.232:8088/getRecommend');
 }
 
+async function getMessage() {
+  return await axios.get('http://47.93.34.232:8088/getMessage');
+}
+
 export function fetchMain (id) {
   return getIndex();
 }
 
 export function fetchRecommend (id) {
   return getRecommend();
+}
+
+export function fetchMessage (id) {
+  return getMessage();
 }

@@ -9,6 +9,13 @@ module.exports = {
       password: 'root',
       database: 'netease_news',
     });
+    // var connection = mysql.createConnection({
+    //   host: '127.0.0.1',
+    //   port: '3306',
+    //   user: 'root',
+    //   password: '111111',
+    //   database: 'netease_news',
+    // });
 
     return new Promise(function(resolve, reject){
       connection.connect(function(err) {
