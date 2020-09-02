@@ -34,7 +34,7 @@ export default {
       this.list.unshift({
         program:content
       });
-      axios.post('http://flz.163.com:8088/postMessage', {
+      axios.post('http://47.93.34.232/:8088/postMessage', {
           content: content
         })
         .then(function (response) {
