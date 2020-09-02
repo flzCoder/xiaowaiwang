@@ -6,6 +6,7 @@
       <router-link :to="'./recommend'"><li>推荐</li></router-link>
     </ul>
     <router-view class="view"></router-view>
+    <a href="http://beian.miit.gov.cn/" target="_blank">浙ICP备2020032336号</a>
   </div>
 </template>
 
