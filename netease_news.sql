@@ -16,6 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `wap3g_comment`
+--
+
+DROP TABLE IF EXISTS `wap3g_comment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wap3g_comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Ö÷¼ü£¬×ÔÔö',
+  `name` varchar(64) NOT NULL DEFAULT '' COMMENT 'ÓÃ»§Ãû',
+  `pic` varchar(2024) NOT NULL COMMENT 'Í¼Æ¬',
+  `program` varchar(8192) NOT NULL COMMENT 'ÄÚÈÝ',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'ÐÞ¸ÄÊ±¼ä',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COMMENT='¸úÌû±í';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wap3g_comment`
+--
+
+LOCK TABLES `wap3g_comment` WRITE;
+/*!40000 ALTER TABLE `wap3g_comment` DISABLE KEYS */;
+INSERT INTO `wap3g_comment` VALUES (20,'默认小王','','今天天气不错 风和日丽的','2020-09-02 14:53:14'),(21,'默认小王','','哈哈哈啊 搞定了','2020-09-02 14:54:14'),(22,'默认小王','','不错不错的','2020-09-02 15:13:43'),(23,'默认小王','','哈哈哈','2020-09-02 15:17:54'),(24,'默认小王','','哈哈哈','2020-09-02 15:18:06'),(25,'默认小王','','哈哈哈','2020-09-02 15:19:44'),(26,'默认小王','','哈哈哈哈哈哈哈哈\n','2020-09-02 15:20:46'),(27,'默认小王','','今天天气不错 风和日丽的','2020-09-02 15:21:48'),(28,'默认小王','','飒飒','2020-09-02 15:22:14'),(29,'默认小王','','奋斗的','2020-09-02 15:23:16'),(30,'默认小王','','发的发的','2020-09-02 15:24:05'),(31,'默认小王','','放大','2020-09-02 15:24:08'),(32,'默认小王','','11','2020-09-03 01:14:20');
+/*!40000 ALTER TABLE `wap3g_comment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `wap3g_news`
 --
 
@@ -53,4 +80,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-08-26 10:13:55
+-- Dump completed on 2020-09-03 10:46:37
