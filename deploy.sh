@@ -17,7 +17,8 @@ project(){
 deploy(){
     project;
     ./local.sh pull;
-    ./local.sh restart
+    ./local.sh stop;
+    ./local.sh online;
 }
 
 if [ $# -eq 0 ]; then
