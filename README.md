@@ -22,6 +22,7 @@ http://bj.bcebos.com/v1/videopc-final/video-edit-tool/202008_1598413474941_10787
 ./start.sh
 本地8088端口
 
+
 # build for production
 npm run build
 
