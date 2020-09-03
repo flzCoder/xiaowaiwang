@@ -19,9 +19,14 @@ http://bj.bcebos.com/v1/videopc-final/video-edit-tool/202008_1598413474941_10787
 ./sync_db.sh
 
 # serve in dev mode, with hot reload at localhost:8080
-./start.sh
+./local.sh start
 本地8088端口
 
+# login ecs
+./local.sh login
+
+#一键部署
+. ./deploy.sh deploy
 
 # build for production
 npm run build
