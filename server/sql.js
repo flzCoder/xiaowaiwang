@@ -9,6 +9,10 @@ alter table wap3g_news add column create_time timestamp default value;
 ALTER TABLE wap3g_news ADD column type INT;
 alter table wap3g_news drop column create_time;
 ALTER TABLE wap3g_news ALTER type SET DEFAULT 1;
+
+改属性名
+ALTER TABLE wap3g_comment CHANGE program content varchar(8192);
+
 desc wap3g_news;
 
 winpty mysql -uroot -p111111

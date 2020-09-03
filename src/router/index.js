@@ -6,6 +6,7 @@ Vue.use(Router)
 const index = () => import('../views/index.vue')
 const recommend = () => import('../views/recommend.vue')
 const message = () => import('../views/message.vue')
+const login = () => import('../views/login.vue')
 
 export function createRouter () {
   return new Router({
@@ -14,6 +15,7 @@ export function createRouter () {
       { path: '/index', name:'index', component: index },
       { path: '/recommend', name:'recommend', component: recommend },
       { path: '/message', name:'message', component: message },
+      { path: '/login', name:'login', component: login },
       { path: '/', redirect: '/index' }
     ]
   })
