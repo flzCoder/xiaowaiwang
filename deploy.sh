@@ -10,7 +10,7 @@ usage()
     exit 1
 }
 project(){
-    cd $BASEDIR"/rich"
+    cd $BASEDIR"/xiaowaiwang"
     pwd
     ls -l
 }
