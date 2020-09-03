@@ -43,9 +43,11 @@ var utils = {
             reject();
           }
           connection.end();
-          results.map((itm,i) => {
-            itm.update_time = utils.formatDate(itm.update_time);
-          })
+          if (results.map) {
+            results.map((itm,i) => {
+              itm.update_time = itm.update_time && utils.formatDate(itm.update_time);
+            })
+          }
           resolve(results);
         });
       });

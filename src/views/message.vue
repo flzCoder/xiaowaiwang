@@ -40,10 +40,12 @@ export default {
       if (content) {
         this.list.unshift({
           content:content,
-          update_time: '今天'
+          update_time: '今天',
+          name: '默认小王'
         });
         axios.post(`${prefixPath}/postMessage`, {
-            content: content
+            content: content,
+            name: '默认小王'
           })
           .then(function (response) {
             self.message =''
