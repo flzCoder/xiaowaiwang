@@ -4,7 +4,9 @@
   "author": "Evan You <yyx990803@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "node index",
+    "dev": "cross-env NODE_ENV=development node index ",
+    "pm2:dev": "pm2 start ecosystem.config.js",
+    "pm2:prod": "pm2 start ecosystem.config.js --env prod",
     "start": "cross-env NODE_ENV=production node index",
     "build": "rimraf dist && npm run build:client && npm run build:server",
     "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.client.config.js --progress --hide-modules",

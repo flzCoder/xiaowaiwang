@@ -14,6 +14,7 @@
 
 <script>
 import axios from 'axios'
+import { prefixPath } from '../originConfig'
 
 export default {
   title () {
@@ -34,7 +35,7 @@ export default {
       this.list.unshift({
         program:content
       });
-      axios.post('http://47.93.34.232:8088/postMessage', {
+      axios.post(`${prefixPath}/postMessage`, {
           content: content
         })
         .then(function (response) {

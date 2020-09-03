@@ -1,22 +1,10 @@
 var mysql = require('mysql');
+var config = require('./dbconfig');
+let env = process.env.NODE_ENV
 
 module.exports = {
   sqlQuery: function(query) {
-    var connection = mysql.createConnection({
-      host: '47.93.34.232',
-      port: '3306',
-      user: 'root',
-      password: 'root',
-      database: 'netease_news',
-    });
-    // var connection = mysql.createConnection({
-    //   host: '127.0.0.1',
-    //   port: '3306',
-    //   user: 'root',
-    //   password: '111111',
-    //   database: 'netease_news',
-    // });
-
+    var connection = mysql.createConnection(config[env]);
     return new Promise(function(resolve, reject){
       connection.connect(function(err) {
         if (err) {

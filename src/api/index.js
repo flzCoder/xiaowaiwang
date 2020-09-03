@@ -1,15 +1,16 @@
 import axios from 'axios'
+import { prefixPath } from '../originConfig'
 
 async function getIndex() {
-  return await axios.get('http://47.93.34.232:8088/getIndex');
+  return await axios.get(`${prefixPath}/getIndex`);
 }
 
 async function getRecommend() {
-  return await axios.get('http://47.93.34.232:8088/getRecommend');
+  return await axios.get(`${prefixPath}/getRecommend`);
 }
 
 async function getMessage() {
-  return await axios.get('http://47.93.34.232:8088/getMessage');
+  return await axios.get(`${prefixPath}/getMessage`);
 }
 
 export function fetchMain (id) {
