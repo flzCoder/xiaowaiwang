@@ -5,6 +5,7 @@
       <div class="update_time" v-text="item.update_time"></div>
     </div>
     <div class="content" v-text="item.content"></div>
+    <img class="pic" :src="item.pic" alt="" />
     <br>
     <div class="delbtn" @click="delComment(item.id)">删除</div>
   </li>
@@ -47,8 +48,12 @@ export default {
 .comment-item {
   position: relative;
   width:100%;
-  height:117px;
   margin-bottom: 18px;
+}
+.pic{
+  padding-left:0;
+  width:auto;
+  margin:15px 0;
 }
 .info {
   overflow:hidden;
@@ -59,5 +64,5 @@ export default {
 .update_time{float:right;}
 
 img{padding-left:600px; width:200px;}
-.delbtn {cursor:pointer;}
+.delbtn {cursor:pointer;width:42px;margin-bottom:26px;}
 </style>

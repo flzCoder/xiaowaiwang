@@ -9,7 +9,9 @@
       <router-link :to="'./login'"><li>登录</li></router-link>
     </ul>
     <router-view class="view"></router-view>
-    <a href="http://beian.miit.gov.cn/" target="_blank">浙ICP备2020032336号</a>
+    <div class="footer">
+      <a href="http://beian.miit.gov.cn/" target="_blank">浙ICP备2020032336号</a>
+    </div>
   </div>
 </template>
 
@@ -52,4 +54,6 @@ export default {
   ul {list-style:none;}
   .nav {overflow:hidden;margin-bottom:20px;}
   .nav li {float:left; padding:3px;margin-right:28px;}
+  .footer {text-align:center;}
+  .footer a{text-decoration: none;}
 </style>
