@@ -17,7 +17,7 @@ router.use((req, res, next) => {
     form.keepExtensions = true;
     form.maxFieldsSize = 5 * 1024 * 1024;
     let picName = uuid.v1() + path.extname(file.name);
-    fs.rename(file.path, 'public\\img\\' + picName, function(err) {
+    fs.rename(file.path, 'public\/img\/' + picName, function(err) {
       if (err) return res.send({
         "error": 403,
         "message": "图片保存异常！"
