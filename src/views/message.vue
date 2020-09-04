@@ -34,7 +34,11 @@ export default {
   mounted() {
     let name = this.$route.name;
      EventBus.$on("delete", ({ id }) => {
-       this.$store.commit('delItem', { name, id })
+       this.list.forEach(function(item, index, arr) {
+          if(item.id == id) {
+              arr.splice(index, 1);
+          }
+      });
      });
   },
   methods: {
@@ -62,18 +66,18 @@ export default {
       let pic = this.preloadurl;
       let self = this;
       if (content) {
-        this.list.unshift({
-          content:content,
-          update_time: '今天',
-          name: '默认小王',
-          pic: pic
-        });
         axios.post(`${prefixPath}/postMessage`, {
             content: content,
             name: '默认小王',
             pic: pic
           })
           .then(function (response) {
+            self.list.unshift({
+              content:content,
+              update_time: '今天',
+              name: '默认小王',
+              pic: pic
+            });
             self.message =''
             self.preloadurl =''
           })

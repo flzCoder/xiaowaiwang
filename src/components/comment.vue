@@ -7,7 +7,7 @@
     <div class="content" v-text="item.content"></div>
     <img class="pic" :src="item.pic" alt="" />
     <br>
-    <div class="delbtn" @click="delComment(item.id)">删除</div>
+    <div class="delbtn" v-show="item.id" @click="delComment()">删除</div>
   </li>
 </template>
 
@@ -28,17 +28,20 @@ export default {
   created() {
   },
   methods: {
-    delComment(id) {
-      axios.delete(`${prefixPath}/deleteMessage/${id}`)
-      .then(function (response) {
-        EventBus.$emit("delete", {
-            id:id
+    delComment() {
+      let id = this.item.id;
+      if (id) {
+        axios.delete(`${prefixPath}/deleteMessage/${id}`)
+        .then(function (response) {
+          EventBus.$emit("delete", {
+              id:id
+          });
+        })
+        .catch(function (error) {
+          alert('服务器开小差了')
+          console.log('error',error);
         });
-      })
-      .catch(function (error) {
-        alert('服务器开小差了')
-        console.log('error',error);
-      });
+      }
     }
   }
 }

@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router();
+const os = require('os');
 const fs = require('fs')
 const path = require('path')
 var uuid = require('uuid');
@@ -17,7 +18,13 @@ router.use((req, res, next) => {
     form.keepExtensions = true;
     form.maxFieldsSize = 5 * 1024 * 1024;
     let picName = uuid.v1() + path.extname(file.name);
-    fs.rename(file.path, 'public\/img\/' + picName, function(err) {
+    let sysType = os.type();
+    console.log('sysType',sysType);
+    let pathtmp = 'public\/img\/';
+    if(sysType==="Windows_NT"){
+      pathtmp = 'public\\img\\';
+    }
+    fs.rename(file.path, pathtmp + picName, function(err) {
       if (err) return res.send({
         "error": 403,
         "message": "图片保存异常！"

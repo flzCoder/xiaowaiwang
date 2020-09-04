@@ -11,6 +11,7 @@ export default {
         return i;
       }
     })
+    console.log('del',id,index);
     res.splice(index, 1);
     console.log('hahha',state.items[name],id);
   }
