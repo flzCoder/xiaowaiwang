@@ -7,6 +7,7 @@ const compression = require('compression')
 const microcache = require('route-cache')
 const bodyParser = require('body-parser')
 const postMessageService = require('./server/postmessage')
+const deleteMessageService = require('./server/deletemessage')
 const getMessageService = require('./server/getmessage')
 const indexService = require('./server/index')
 const recommend = require('./server/recommend')
@@ -80,6 +81,7 @@ app.get('/getRecommend', recommend)
 app.get('/getIndex', indexService)
 app.get('/getMessage', getMessageService)
 app.post('/postMessage', postMessageService)
+app.delete('/deleteMessage/:id', deleteMessageService)
 
 // since this app has no user-specific content, every page is micro-cacheable.
 // if your app involves user-specific content, you need to implement custom

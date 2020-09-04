@@ -2,9 +2,10 @@
   <div id="app">
     <h3 class="website">校外网</h3>
     <ul class='nav'>
-      <router-link :to="'./index'"><li>资讯</li></router-link>
-      <router-link :to="'./recommend'"><li>信息流</li></router-link>
+      <router-link :to="'./index'" v-show="false"><li>首页</li></router-link>
       <router-link :to="'./message'"><li>发帖</li></router-link>
+      <router-link :to="'./recommend'" v-show="true"><li>资讯</li></router-link>
+      <router-link :to="'./user'"><li>个人主页</li></router-link>
       <router-link :to="'./login'"><li>登录</li></router-link>
     </ul>
     <router-view class="view"></router-view>
@@ -43,7 +44,6 @@ export default {
    text-align:center
 
   .router-link-active li{
-    text-decoration: underline;
     color: red;
   }
   .view {

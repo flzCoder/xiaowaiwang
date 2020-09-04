@@ -17,6 +17,7 @@
 import axios from 'axios'
 import comment from '../components/comment.vue'
 import { prefixPath } from '../originConfig'
+import { EventBus } from '../store/eventBus'
 
 export default {
   title () {
@@ -32,6 +33,12 @@ export default {
   },
   components: {
     comment
+  },
+  mounted() {
+    let name = this.$route.name;
+     EventBus.$on("delete", ({ id }) => {
+       this.$store.commit('delItem', { name, id })
+     });
   },
   methods: {
     post() {
