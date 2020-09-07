@@ -1,7 +1,7 @@
 const originConfig = {
   dev: {
     protocal: 'http',
-    domain: 'flz.163.com',
+    domain: 'flz.mudan.com',
     ip: '127.0.0.1',
     port: '8088'
   },
