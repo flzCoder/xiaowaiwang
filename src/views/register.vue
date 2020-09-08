@@ -1,5 +1,5 @@
 <template>
-  <div class="login main">
+  <div class="register main">
     <ul>
       <li class="username">
         <label for="username">用户名</label>
@@ -9,12 +9,12 @@
         <label for="password">密码</label>
         <input type="text" name="password" v-model="password" value="" id="password"/>
       </li>
+      <li class="confirm">
+        <label for="confirm">确认密码</label>
+        <input type="text" name="confirm" v-model="confirm" value="" id="confirm"/>
+      </li>
     </ul>
-    <div class="loginbtn" @click="login">登录</div>
-    <div class="tips">
-      <span class="left">忘记密码</span>
-      <span class="right" @click="register">去注册</span>
-    </div>
+    <div class="registerbtn" @click="register">注册</div>
   </div>
 </template>
 
@@ -29,9 +29,10 @@ export default {
   },
   data() {
     return {
-      title: '登录',
+      title: '注册',
       username: '',
-      password: ''
+      password: '',
+      confirm: ''
     }
   },
   asyncData () {
@@ -40,25 +41,22 @@ export default {
   },
   methods: {
     register() {
-      this.$router.push('/register')
-    },
-    login() {
-      axios.post(`${prefixPath}/login`,{
+      let self = this;
+      let data = {
         username: this.username,
         password: this.password
-      })
+      }
+      axios.post(`${prefixPath}/register`,data)
       .then(res=>{
-        if (res.data.status === 1) {
-          localStorage.setItem("username", res.data.name);
-          EventBus.$emit('login', res.data.name)
+        if (res.data.status === 'ok') {
+          localStorage.setItem("username", this.username);
+          EventBus.$emit('login', this.username)
           this.$router.replace({
             path:'/user',
             query:{
-              username:res.data.name
+              username:this.username
             }
           })
-        } else {
-          alert(`${res.data.msg}`)
         }
       })
       .catch(err=>{
@@ -71,13 +69,13 @@ export default {
 </script>
 
 <style lang="stylus">
-  .login {
+  .register {
     padding:20px 0 0 35px;
     min-height:500px;
   }
-  li {
+  .register li {
     position:relative;
-    padding-left:66px;
+    padding-left:85px;
     margin-bottom:10px;
   }
   label {
@@ -90,7 +88,7 @@ export default {
     outline:none;
     padding: 0 10px;
   }
-  .loginbtn {
+  .registerbtn {
     margin-top:30px;
     cursor:pointer;
     width: 193px;
@@ -100,11 +98,7 @@ export default {
     line-height: 30px;
     color: #fff;
     border-radius: 7px;
-    margin-left: 69px;
+    margin-left: 85px;
   }
-  .loginbtn:active {color:#f2f2f2;}
-  .tips{margin-top:10px;margin-left:69px;overflow:hidden;width:193px;}
-  .tips span{font-size:12px;cursor:pointer;}
-  .tips .left{float:left;}
-  .tips .right{float:right;}
+  .registerbtn:active {color:#f2f2f2;}
 </style>

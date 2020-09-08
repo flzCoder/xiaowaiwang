@@ -1,12 +1,14 @@
 <template>
   <div id="app">
     <h3 class="website">校外网</h3>
-    <ul class='nav'>
+    <ul class='nav' v-show="showNav">
       <router-link :to="'./index'" v-show="false"><li>首页</li></router-link>
-      <router-link :to="'./message'"><li>发帖</li></router-link>
+      <router-link :to="'./message'" v-show="isloged"><li>发帖</li></router-link>
       <router-link :to="'./recommend'" v-show="true"><li>资讯</li></router-link>
-      <router-link :to="'./user'"><li>个人主页</li></router-link>
-      <router-link :to="'./login'"><li>登录</li></router-link>
+      <router-link :to="'./user'" v-show="false"><li>个人主页</li></router-link>
+      <router-link :to="'./login'" v-show="!isloged"><li>登录</li></router-link>
+      <router-link :to="'./register'" v-if="false"><li>注册</li></router-link>
+      <router-link :to="'./user'" v-show="isloged"><li v-text="nickname"></li></router-link>
     </ul>
     <router-view class="view"></router-view>
     <div class="footer">
@@ -16,13 +18,33 @@
 </template>
 
 <script>
+import { EventBus } from './store/eventBus'
+
 export default {
   data() {
     return {
-      aa: 15
+      aa: 15,
+      nickname: '',
+      isloged:false,
+      showNav:false
     }
   },
   created() {
+  },
+  mounted() {
+    EventBus.$on("login", (name) => {
+      this.nickname = '欢迎您: '+name;
+      this.isloged = true;
+    });
+    let username = localStorage.getItem("username");
+    if (username) {
+      this.nickname = '欢迎您: '+username;
+      this.isloged = true;
+      this.showNav = true;
+    } else {
+      this.showNav = true;
+      this.$router.push('/login')
+    }
   },
   methods: {
     bb(num) {

@@ -25,3 +25,11 @@ charset gbk
 
 
 INSERT INTO wap3g_comment ( name, pic, program ) VALUES ( '默认小王', '','' );
+
+CREATE TABLE `user` (
+`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+`name` varchar(64) NOT NULL DEFAULT '' COMMENT '用户名',
+`password` varchar(2024) NOT NULL COMMENT '密码',
+`update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COMMENT='用户表'
