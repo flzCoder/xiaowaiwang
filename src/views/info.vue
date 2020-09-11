@@ -32,7 +32,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .information {
   min-height:500px;
 }

@@ -70,7 +70,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   .login {
     padding:20px 0 0 35px;
     min-height:500px;

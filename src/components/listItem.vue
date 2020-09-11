@@ -24,7 +24,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .news-item {
   position: relative;
   width:914px;
