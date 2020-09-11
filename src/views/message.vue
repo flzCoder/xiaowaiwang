@@ -64,18 +64,19 @@ export default {
     post() {
       let content = this.message;
       let pic = this.preloadurl;
+      let nickname = localStorage.getItem("username") || ('用户' + +new Date());
       let self = this;
       if (content) {
         axios.post(`${prefixPath}/postMessage`, {
             content: content,
-            name: '默认小王',
+            name: nickname,
             pic: pic
           })
           .then(function (response) {
             self.list.unshift({
               content:content,
               update_time: '今天',
-              name: '默认小王',
+              name: nickname,
               pic: pic
             });
             self.message =''
