@@ -52,7 +52,7 @@ export default {
           localStorage.setItem("username", res.data.name);
           EventBus.$emit('login', res.data.name)
           this.$router.replace({
-            path:'/user',
+            path:'/message',
             query:{
               username:res.data.name
             }
@@ -80,7 +80,7 @@ export default {
     padding-left:66px;
     margin-bottom:10px;
   }
-  label {
+  .username label, .password label {
     position:absolute;
     left:0;
     line-height: 26px;

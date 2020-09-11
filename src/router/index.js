@@ -12,6 +12,7 @@ const message = () => import('../views/message.vue')
 const login = () => import('../views/login.vue')
 const register = () => import('../views/register.vue')
 const user = () => import('../views/user.vue')
+const info = () => import('../views/info.vue')
 
 export function createRouter () {
   return new Router({
@@ -20,6 +21,7 @@ export function createRouter () {
       { path: '/index', name:'index', component: index },
       { path: '/recommend', name:'recommend', component: recommend },
       { path: '/user', name:'user', component: user },
+      { path: '/info', name:'info', component: info },
       { path: '/message', name:'message', component: message },
       { path: '/login', name:'login', component: login },
       { path: '/register', name:'register', component: register },

@@ -2,13 +2,13 @@
   <div id="app">
     <h3 class="website">校外网</h3>
     <ul class='nav' v-show="showNav">
+      <router-link :to="'./info'" v-show="isloged"><li class="enroll"><span v-text="nickname"></span><span class="logout" @click.prevent='logout'>退出</span></li></router-link>
       <router-link :to="'./index'" v-show="false"><li>首页</li></router-link>
-      <router-link :to="'./message'" v-show="isloged"><li>发帖</li></router-link>
-      <router-link :to="'./recommend'" v-show="true"><li>资讯</li></router-link>
-      <router-link :to="'./user'" v-show="false"><li>个人主页</li></router-link>
-      <router-link :to="'./login'" v-show="!isloged"><li>登录</li></router-link>
+      <router-link :to="'./message'" v-show="true"><li>发帖</li></router-link>
+      <router-link :to="'./recommend'" v-show="false"><li>资讯</li></router-link>
+      <router-link :to="'./user'" v-show="isloged"><li>个人主页</li></router-link>
+      <router-link :to="'./login'" v-show="!isloged"><li class="enroll">登录</li></router-link>
       <router-link :to="'./register'" v-if="false"><li>注册</li></router-link>
-      <router-link :to="'./user'" v-show="isloged"><li v-text="nickname"></li></router-link>
     </ul>
     <router-view class="view"></router-view>
     <div class="footer">
@@ -23,7 +23,6 @@ import { EventBus } from './store/eventBus'
 export default {
   data() {
     return {
-      aa: 15,
       nickname: '',
       isloged:false,
       showNav:false
@@ -43,12 +42,13 @@ export default {
       this.showNav = true;
     } else {
       this.showNav = true;
-      this.$router.push('/login')
+      //this.$router.push('/login')
     }
   },
   methods: {
-    bb(num) {
-      return ++num;
+    logout() {
+      localStorage.removeItem("username");
+      this.isloged = false;
     }
   }
 }
@@ -63,7 +63,9 @@ export default {
     width:980px;
     margin:0 auto;
   }
-
+  .logout {
+    margin-left:10px;
+  }
   h3
    text-align:center
 
@@ -74,7 +76,8 @@ export default {
     color: #000;
   }
   ul {list-style:none;}
-  .nav {overflow:hidden;margin-bottom:20px;}
+  .nav {overflow:hidden;margin-bottom:50px;position:relative;}
+  .nav .enroll{position:absolute; right:0;}
   .nav li {float:left; padding:3px;margin-right:28px;}
   .footer {text-align:center;}
   .footer a{text-decoration: none;}

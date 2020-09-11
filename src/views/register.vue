@@ -52,7 +52,7 @@ export default {
           localStorage.setItem("username", this.username);
           EventBus.$emit('login', this.username)
           this.$router.replace({
-            path:'/user',
+            path:'/message',
             query:{
               username:this.username
             }
@@ -68,7 +68,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   .register {
     padding:20px 0 0 35px;
     min-height:500px;
