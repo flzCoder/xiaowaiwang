@@ -47,11 +47,14 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .comment-item {
   position: relative;
   width:100%;
   margin-bottom: 18px;
+}
+.comment-item img{
+  width:100%;
 }
 .pic{
   padding-left:0;
