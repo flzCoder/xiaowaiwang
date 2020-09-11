@@ -2,11 +2,12 @@
   <div id="app">
     <h3 class="website">校外网</h3>
     <ul class='nav' v-show="showNav">
-      <router-link :to="'./info'" v-show="isloged"><li class="enroll"><span v-text="nickname"></span><span class="logout" @click.prevent='logout'>退出</span></li></router-link>
+      <router-link :to="'./user'" v-show="isloged"><li class="enroll"><span v-text="nickname"></span><span class="logout" @click.prevent='logout'>退出</span></li></router-link>
       <router-link :to="'./index'" v-show="false"><li>首页</li></router-link>
-      <router-link :to="'./message'" v-show="true"><li>发帖</li></router-link>
+      <router-link :to="'./message'" v-show="true"><li>新鲜事</li></router-link>
+      <router-link :to="'./friend'" v-show="true"><li>加好友</li></router-link>
       <router-link :to="'./recommend'" v-show="false"><li>资讯</li></router-link>
-      <router-link :to="'./user'" v-show="isloged"><li>个人主页</li></router-link>
+      <router-link :to="'./info'" v-show="false"><li>个人主页</li></router-link>
       <router-link :to="'./login'" v-show="!isloged"><li class="enroll">登录</li></router-link>
       <router-link :to="'./register'" v-if="false"><li>注册</li></router-link>
     </ul>

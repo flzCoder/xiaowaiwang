@@ -1,7 +1,7 @@
 <template>
-  <div class="user main">
-    <h3>来吧  {{username}}</h3>
-    <div class="content">展示</div>
+  <div class="friend">
+    <h3>寻找好友</h3>
+    <div class="content">敬请期待。。。</div>
     <br />
     <br />
     <br />
@@ -19,12 +19,11 @@ export default {
   },
   data() {
     return {
-      title: '个人主页',
+      title: '寻找好友',
       username: ''
     }
   },
   mounted() {
-    this.username = localStorage.getItem("username");
   },
   computed: {
   },
@@ -34,9 +33,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.user {
+.friend {
   min-height:500px;
 }
-.user h3,.user .content{ text-align:left; }
-.content{margin-top:20px; text-align:center;}
+.friend h3,.information .content{ text-align:left; }
+.content{margin-top:20px; text-align:left;}
 </style>

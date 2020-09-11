@@ -13,6 +13,7 @@ const login = () => import('../views/login.vue')
 const register = () => import('../views/register.vue')
 const user = () => import('../views/user.vue')
 const info = () => import('../views/info.vue')
+const friend = () => import('../views/friend.vue')
 
 export function createRouter () {
   return new Router({
@@ -22,6 +23,7 @@ export function createRouter () {
       { path: '/recommend', name:'recommend', component: recommend },
       { path: '/user', name:'user', component: user },
       { path: '/info', name:'info', component: info },
+      { path: '/friend', name:'friend', component: friend },
       { path: '/message', name:'message', component: message },
       { path: '/login', name:'login', component: login },
       { path: '/register', name:'register', component: register },
