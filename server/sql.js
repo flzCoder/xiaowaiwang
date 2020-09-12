@@ -33,3 +33,7 @@ CREATE TABLE `user` (
 `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COMMENT='用户表'
+
+alter table user AUTO_INCREMENT=10000;
+alter table wap3g_comment rename to message;
+RENAME database netease_news TO xiaowaiwang

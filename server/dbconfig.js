@@ -4,20 +4,20 @@ module.exports = {
     port: '3306',
     user: 'root',
     password: 'root',
-    database: 'netease_news',
+    database: 'xiaowaiwang',
   },
   dev:{
     host: '127.0.0.1',
     port: '3306',
     user: 'root',
     password: '111111',
-    database: 'netease_news',
+    database: 'xiaowaiwang',
   },
   production:{
     host: '127.0.0.1',
     port: '3306',
     user: 'root',
     password: '111111',
-    database: 'netease_news',
+    database: 'xiaowaiwang',
   }
 }
