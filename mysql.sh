@@ -1,2 +1,2 @@
 #!/bin/bash
-winpty mysql -h127.0.0.1 -uroot -p111111 -P3306 netease_news
+winpty mysql -h127.0.0.1 -uroot -proot -P3306 netease_news

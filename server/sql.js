@@ -37,3 +37,6 @@ PRIMARY KEY (`id`)
 alter table user AUTO_INCREMENT=10000;
 alter table wap3g_comment rename to message;
 RENAME database netease_news TO xiaowaiwang
+
+修改数据库密码
+winpty mysqladmin -uroot -p111111 password root
