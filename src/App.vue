@@ -45,6 +45,10 @@ export default {
           id: 'name',
           item: data.res[0].name
         })
+        this.$store.commit('setInfo', {
+          id: 'id',
+          item: data.res[0].id
+        })
         this.$store.commit('setLoged', {
           mine: true,
           btn: false

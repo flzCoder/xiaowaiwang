@@ -64,12 +64,12 @@ export default {
     post() {
       let content = this.message;
       let pic = this.preloadurl;
-      let nickname = localStorage.getItem("username") || ('用户' + +new Date());
+      let userid = this.info.id;
       let self = this;
-      if (content) {
+      if (content && userid) {
         axios.post(`${prefixPath}/postMessage`, {
             content: content,
-            userid: this.info.id,
+            userid: userid,
             pic: pic
           })
           .then(function (response) {
