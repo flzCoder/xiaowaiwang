@@ -6,12 +6,16 @@ const favicon = require('serve-favicon')
 const compression = require('compression')
 const microcache = require('route-cache')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 const registerService = require('./server/register')
 const loginService = require('./server/login')
 const postFileService = require('./server/postfile')
 const postMessageService = require('./server/postmessage')
 const deleteMessageService = require('./server/deletemessage')
 const getMessageService = require('./server/getmessage')
+const getInfoService = require('./server/getinfo')
+const logoutService = require('./server/logout')
+const checkService = require('./server/check')
 const indexService = require('./server/index')
 const recommend = require('./server/recommend')
 const resolve = file => path.resolve(__dirname, file)
@@ -72,6 +76,7 @@ const serve = (path, cache) => express.static(resolve(path), {
   maxAge: cache && isProd ? 1000 * 60 * 60 * 24 * 30 : 0
 })
 
+app.use(cookieParser('123456'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extend:false}))
 app.use(compression({ threshold: 0 }))
@@ -83,18 +88,15 @@ app.use('/service-worker.js', serve('./dist/service-worker.js'))
 app.get('/getRecommend', recommend)
 app.get('/getIndex', indexService)
 app.get('/getMessage', getMessageService)
+app.get('/getInfo', getInfoService)
+app.get('/logout', logoutService)
+app.get('/check', checkService)
 app.post('/postMessage', postMessageService)
 app.post('/postFile', postFileService)
 app.post('/register', registerService)
 app.post('/login', loginService)
 app.delete('/deleteMessage/:id', deleteMessageService)
 
-// since this app has no user-specific content, every page is micro-cacheable.
-// if your app involves user-specific content, you need to implement custom
-// logic to determine whether a request is cacheable based on its url and
-// headers.
-// 1-second microcache.
-// https://www.nginx.com/blog/benefits-of-microcaching-nginx/
 app.use(microcache.cacheSeconds(1, req => useMicroCache && req.originalUrl))
 
 function render (req, res) {

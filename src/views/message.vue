@@ -69,14 +69,14 @@ export default {
       if (content) {
         axios.post(`${prefixPath}/postMessage`, {
             content: content,
-            name: nickname,
+            userid: this.info.id,
             pic: pic
           })
           .then(function (response) {
             self.list.unshift({
               content:content,
               update_time: '今天',
-              name: nickname,
+              name: self.info.name,
               pic: pic
             });
             self.message =''
@@ -98,6 +98,9 @@ export default {
   computed: {
     list () {
       return this.$store.state.items[this.$route.name].res;
+    },
+    info () {
+      return this.$store.state.info;
     }
   },
   components: {

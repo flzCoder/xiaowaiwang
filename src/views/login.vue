@@ -36,8 +36,6 @@ export default {
   },
   asyncData () {
   },
-  computed: {
-  },
   methods: {
     register() {
       this.$router.push('/register')
@@ -49,8 +47,14 @@ export default {
       })
       .then(res=>{
         if (res.data.status === 1) {
-          localStorage.setItem("username", res.data.name);
-          EventBus.$emit('login', res.data.name)
+          this.$store.commit('setInfo', {
+            id: 'name',
+            item: res.data.name
+          })
+          this.$store.commit('setLoged', {
+            mine: true,
+            btn: false
+          })
           this.$router.replace({
             path:'/message',
             query:{
@@ -62,7 +66,7 @@ export default {
         }
       })
       .catch(err=>{
-        alert('服务器开小差了')
+        //alert('服务器开小差了')
         console.log('err',err);
       })
     }

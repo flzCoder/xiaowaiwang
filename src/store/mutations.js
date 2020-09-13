@@ -4,6 +4,12 @@ export default {
   setItem (state, { id, item }) {
     Vue.set(state.items, id, item)
   },
+  setInfo (state, { id, item }) {
+    Vue.set(state.info, id, item)
+  },
+  setLoged (state, isloged) {
+    Vue.set(state, 'isloged', isloged)
+  },
   delItem (state, { name, id }) {
     let res = state.items[name].res;
     let index = res.find((item,i) => {
@@ -11,8 +17,6 @@ export default {
         return i;
       }
     })
-    console.log('del',id,index);
     res.splice(index, 1);
-    console.log('hahha',state.items[name],id);
   }
 }

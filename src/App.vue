@@ -1,14 +1,14 @@
 <template>
   <div id="app">
     <h3 class="website">校外网</h3>
-    <ul class='nav' v-show="showNav">
-      <router-link :to="'./user'" v-show="isloged"><li class="enroll"><span v-text="nickname"></span><span class="logout" @click.prevent='logout'>退出</span></li></router-link>
+    <ul class='nav'>
+      <router-link :to="'./user'" v-show="isloged.mine"><li class="enroll"><span>欢迎您{{info.name}}</span><span class="logout" @click.prevent='logout'>退出</span></li></router-link>
       <router-link :to="'./index'" v-show="false"><li>首页</li></router-link>
       <router-link :to="'./message'" v-show="true"><li>新鲜事</li></router-link>
       <router-link :to="'./friend'" v-show="true"><li>加好友</li></router-link>
       <router-link :to="'./recommend'" v-show="false"><li>资讯</li></router-link>
       <router-link :to="'./info'" v-show="false"><li>个人主页</li></router-link>
-      <router-link :to="'./login'" v-show="!isloged"><li class="enroll">登录</li></router-link>
+      <router-link :to="'./login'" v-show="isloged.btn"><li class="enroll">登录</li></router-link>
       <router-link :to="'./register'" v-if="false"><li>注册</li></router-link>
     </ul>
     <router-view class="view"></router-view>
@@ -20,36 +20,66 @@
 
 <script>
 import { EventBus } from './store/eventBus'
+import { prefixPath } from './originConfig'
+import axios from 'axios'
 
 export default {
   data() {
-    return {
-      nickname: '',
-      isloged:false,
-      showNav:false
+    return {}
+  },
+  computed: {
+    info () {
+      return this.$store.state.info;
+    },
+    isloged () {
+      return this.$store.state.isloged;
     }
   },
-  created() {
-  },
+  created() {},
   mounted() {
-    EventBus.$on("login", (name) => {
-      this.nickname = '欢迎您: '+name;
-      this.isloged = true;
-    });
-    let username = localStorage.getItem("username");
-    if (username) {
-      this.nickname = '欢迎您: '+username;
-      this.isloged = true;
-      this.showNav = true;
-    } else {
-      this.showNav = true;
-      //this.$router.push('/login')
-    }
+    axios.get(`${prefixPath}/getInfo`)
+    .then((res) =>{
+      let data = res.data;
+      if (data.code === 200) {
+        this.$store.commit('setInfo', {
+          id: 'name',
+          item: data.res[0].name
+        })
+        this.$store.commit('setLoged', {
+          mine: true,
+          btn: false
+        })
+      } else {
+        this.$store.commit('setLoged', {
+          mine: false,
+          btn: true
+        })
+      }
+    })
+    .catch((err) => {
+      this.$store.commit('setLoged', {
+        mine: false,
+        btn: true
+      })
+    })
   },
   methods: {
     logout() {
-      localStorage.removeItem("username");
-      this.isloged = false;
+      axios.get(`${prefixPath}/logout`)
+      .then((res) =>{
+        let data = res.data;
+        if (data.code === 200) {
+          this.$store.commit('setLoged', {
+            mine: false,
+            btn: true
+          })
+          this.$store.commit('setInfo', {
+            id: 'name',
+            item: ''
+          })
+        }
+      })
+      .catch((err) => {})
     }
   }
 }

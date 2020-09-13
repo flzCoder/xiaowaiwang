@@ -54,7 +54,7 @@ export default {
   margin-bottom: 18px;
 }
 .comment-item img{
-  width:100%;
+  height:280px;
 }
 .pic{
   padding-left:0;

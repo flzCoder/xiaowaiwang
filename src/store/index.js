@@ -8,7 +8,12 @@ Vue.use(Vuex)
 export function createStore () {
   return new Vuex.Store({
     state: {
-      items: {}
+      items: {},
+      info: {},
+      isloged: {
+        mine: false,
+        btn: false
+      }
     },
     actions,
     mutations
