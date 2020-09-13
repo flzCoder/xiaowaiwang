@@ -36,7 +36,11 @@ export default {
     }
   },
   created() {
-    console.log(111222);
+  },
+  beforeMount() {
+
+  },
+  mounted() {
     axios.get(`${prefixPath}/getInfo`)
     .then((res) =>{
       let data = res.data;
@@ -66,12 +70,6 @@ export default {
         btn: true
       })
     })
-  },
-  beforeMount() {
-
-  },
-  mounted() {
-
   },
   methods: {
     logout() {
