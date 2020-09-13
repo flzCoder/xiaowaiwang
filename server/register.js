@@ -13,7 +13,7 @@ router.use((req, res, next) => {
       httpOnly: true,
       signed: true
     });
-    res.send({status: 'ok'})
+    res.send({status: 'ok', data: data})
   })
   return;
 });

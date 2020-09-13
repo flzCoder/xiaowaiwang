@@ -35,8 +35,8 @@ export default {
       return this.$store.state.isloged;
     }
   },
-  created() {},
-  mounted() {
+  created() {
+    console.log(111222);
     axios.get(`${prefixPath}/getInfo`)
     .then((res) =>{
       let data = res.data;
@@ -66,6 +66,12 @@ export default {
         btn: true
       })
     })
+  },
+  beforeMount() {
+
+  },
+  mounted() {
+
   },
   methods: {
     logout() {

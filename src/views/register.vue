@@ -61,10 +61,15 @@ export default {
         }
         axios.post(`${prefixPath}/register`,data)
         .then(res=>{
-          if (res.data.status === 'ok') {
+          let data = res.data;
+          if (data.status === 'ok') {
             this.$store.commit('setInfo', {
               id: 'name',
               item: this.username
+            })
+            this.$store.commit('setInfo', {
+              id: 'id',
+              item: data.data.insertId
             })
             this.$store.commit('setLoged', {
               mine: true,
