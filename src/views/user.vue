@@ -1,32 +1,50 @@
 <template>
   <div class="user main">
-    <h3>来吧  {{username}}</h3>
-    <div class="content">展示</div>
-    <br />
-    <br />
-    <br />
+    <h3 class="username">{{info.name}}</h3>
+    <div class="newsh">新鲜事</div>
+    <div class="line"></div>
+    {{list}}
+    <ul class="commentList">
+      <comment :item='item' :key='i' v-for='(item, i) in userlist'></comment>
+    </ul>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import comment from '../components/comment.vue'
+import { prefixPath } from '../originConfig'
 
 export default {
   title () {
     return this.title
   },
-  asyncData () {
-  },
+  asyncData () {},
   data() {
     return {
       title: '个人主页',
-      username: ''
+      userlist: []
     }
   },
+  components: {
+    comment
+  },
   mounted() {
-    this.username = localStorage.getItem("username");
   },
   computed: {
+    info () {
+      return this.$store.state.info;
+    },
+    list () {
+      let id = this.info.id;
+      if (id) {
+        axios.get(`${prefixPath}/getMessage?userid=${id}`)
+        .then(res => {
+          this.userlist = res.data.res;
+          return res.data.res;
+        }).catch(ex => {})
+      }
+    }
   },
   methods: {
   }
@@ -38,5 +56,6 @@ export default {
   min-height:500px;
 }
 .user h3,.user .content{ text-align:left; }
-.content{margin-top:20px; text-align:center;}
+.username{ margin-bottom:20px; }
+.content{ margin-top:20px; text-align:center; }
 </style>

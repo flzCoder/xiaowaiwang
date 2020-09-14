@@ -25,7 +25,7 @@ import { EventBus } from '../store/eventBus'
 export default {
   data() {
     return {
-      title: '留言',
+      title: '新鲜事',
       message: '',
       imgfile: '',
       preloadurl: ''
