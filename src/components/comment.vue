@@ -7,7 +7,7 @@
     <div class="content" v-text="item.content"></div>
     <img class="pic" :src="item.pic" alt="" />
     <br>
-    <div class="delbtn" v-show="item.id" @click="delComment()">删除</div>
+    <div class="delbtn" v-show="item.id && info.name === item.name" @click="delComment()">删除</div>
   </li>
 </template>
 
@@ -27,15 +27,30 @@ export default {
   },
   created() {
   },
+  computed: {
+    info () {
+      return this.$store.state.info;
+    }
+  },
   methods: {
     delComment() {
       let id = this.item.id;
+      let self = this;
       if (id) {
         axios.delete(`${prefixPath}/deleteMessage/${id}`)
         .then(function (response) {
-          EventBus.$emit("delete", {
-              id:id
-          });
+          let path = self.$router.history.current.path;
+          if (path ==="/user") {
+            self.$store.commit('deleteUserItem', {
+              id: self.info.id,
+              delid: id
+            })
+          } else if (path === '/message') {
+            self.$store.commit('deleteMessageItem', {
+              id: 'message',
+              delid: id
+            })
+          }
         })
         .catch(function (error) {
           alert('服务器开小差了')

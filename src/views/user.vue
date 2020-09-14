@@ -1,17 +1,18 @@
 <template>
   <div class="user main">
-    <h3 class="username">{{info.name}}</h3>
-    <div class="newsh">新鲜事</div>
+    <publish-thing></publish-thing>
     <div class="line"></div>
     <ul class="commentList">
-      <comment :item='item' :key='i' v-for='(item, i) in userlist'></comment>
+      <comment :item='item' :key='i' v-for='(item, i) in list'></comment>
     </ul>
+    <div class="nocontent">快来发布最新的状态吧</div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import comment from '../components/comment.vue'
+import publishThing from '../components/publish.vue'
 import { prefixPath } from '../originConfig'
 
 export default {
@@ -22,12 +23,11 @@ export default {
   data() {
     return {
       title: '个人主页',
-      userlist: [],
-      a: ''
     }
   },
   components: {
-    comment
+    comment,
+    publishThing
   },
   mounted() {
     let id = this.info.id;
@@ -46,13 +46,20 @@ export default {
   computed: {
     info () {
       return this.$store.state.info;
+    },
+    list () {
+      console.log('this.$store.state.items',this.$store.state.items);
+      return this.$store.state.items[this.info.id];
     }
   },
   methods: {
     getUserMessage(id) {
       axios.get(`${prefixPath}/getMessage?userid=${id}`)
       .then(res => {
-        this.userlist = res.data.res;
+        this.$store.commit('setItem', {
+          id: this.info.id,
+          item: res.data.res
+        })
       }).catch(ex => {})
     }
   }

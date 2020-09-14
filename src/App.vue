@@ -5,7 +5,7 @@
       <router-link :to="'./user'" v-show="isloged.mine"><li class="enroll"><span>欢迎您{{info.name}}</span><span class="logout" @click.prevent='logout'>退出</span></li></router-link>
       <router-link :to="'./index'" v-show="false"><li>首页</li></router-link>
       <router-link :to="'./message'" v-show="true"><li>新鲜事</li></router-link>
-      <router-link :to="'./friend'" v-show="true"><li>加好友</li></router-link>
+      <router-link :to="'./friend'" v-show="false"><li>加好友</li></router-link>
       <router-link :to="'./recommend'" v-show="false"><li>资讯</li></router-link>
       <router-link :to="'./info'" v-show="false"><li>个人主页</li></router-link>
       <router-link :to="'./login'" v-show="isloged.btn"><li class="enroll">登录</li></router-link>
@@ -104,12 +104,13 @@ export default {
   }
   .logout {
     margin-left:10px;
+    color: #000;
   }
   h3
    text-align:center
 
   .router-link-active li{
-    color: red;
+    //color: red;
   }
   .view {
     color: #000;
