@@ -67,6 +67,10 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.commentList{
+  width:800px;
+  margin: 0 0 56px 26px;
+}
 .user {
   min-height:500px;
 }
