@@ -3,7 +3,6 @@
     <h3 class="username">{{info.name}}</h3>
     <div class="newsh">新鲜事</div>
     <div class="line"></div>
-    {{list}}
     <ul class="commentList">
       <comment :item='item' :key='i' v-for='(item, i) in userlist'></comment>
     </ul>
@@ -23,30 +22,39 @@ export default {
   data() {
     return {
       title: '个人主页',
-      userlist: []
+      userlist: [],
+      a: ''
     }
   },
   components: {
     comment
   },
   mounted() {
+    let id = this.info.id;
+    if (id) {
+      this.getUserMessage(id);
+    }
+  },
+  watch: {
+    info(val) {
+      let id = val.id;
+      if (id) {
+        this.getUserMessage(id);
+      }
+    }
   },
   computed: {
     info () {
       return this.$store.state.info;
-    },
-    list () {
-      let id = this.info.id;
-      if (id) {
-        axios.get(`${prefixPath}/getMessage?userid=${id}`)
-        .then(res => {
-          this.userlist = res.data.res;
-          return res.data.res;
-        }).catch(ex => {})
-      }
     }
   },
   methods: {
+    getUserMessage(id) {
+      axios.get(`${prefixPath}/getMessage?userid=${id}`)
+      .then(res => {
+        this.userlist = res.data.res;
+      }).catch(ex => {})
+    }
   }
 }
 </script>
