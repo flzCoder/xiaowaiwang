@@ -89,6 +89,7 @@ export default {
             id: 'id',
             item: ''
           })
+          this.$router.replace('./message')
         }
       })
       .catch((err) => {})
