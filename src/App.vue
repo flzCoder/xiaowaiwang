@@ -85,6 +85,10 @@ export default {
             id: 'name',
             item: ''
           })
+          this.$store.commit('setInfo', {
+            id: 'id',
+            item: ''
+          })
         }
       })
       .catch((err) => {})

@@ -1,5 +1,5 @@
 <template>
-<div class="commentInput">
+<div class="commentInput" v-show="!!info.id">
   <textarea placeholder="今天有什么新鲜事" name="name" v-model="message" rows="8" cols="80"></textarea>
   <div class="btn" @click='post'>发布</div>
   <label for="imgfile" class="imgfile">上传图片</label>
@@ -43,7 +43,6 @@ export default {
             data: formData
           }).then(function(response) {
             self.preloadurl = `${prefixPath}/public/img/${response.data.picAddr}`;
-            console.log('success', response);
           })
           .catch(function(error) {
             console.log('error', error);
