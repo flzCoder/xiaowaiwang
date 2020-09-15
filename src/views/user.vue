@@ -5,7 +5,7 @@
     <ul class="commentList">
       <comment :item='item' :key='i' v-for='(item, i) in list'></comment>
     </ul>
-    <div class="nocontent">快来发布最新的状态吧</div>
+    <div class="nocontent" v-show="isEmpty">快来发布最新的状态吧</div>
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
   asyncData () {},
   data() {
     return {
-      title: '个人主页',
+      title: '个人主页'
     }
   },
   components: {
@@ -48,8 +48,15 @@ export default {
       return this.$store.state.info;
     },
     list () {
-      console.log('this.$store.state.items',this.$store.state.items);
       return this.$store.state.items[this.info.id];
+    },
+    isEmpty () {
+      let list = this.$store.state.items[this.info.id];
+      if (list) {
+        return !list.length;
+      } else {
+        return true;
+      }
     }
   },
   methods: {

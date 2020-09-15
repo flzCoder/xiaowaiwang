@@ -30,7 +30,6 @@ export default {
   },
   computed: {
     list () {
-      console.log('this.$store.state.items',this.$store.state.items);
       return this.$store.state.items[this.$route.name].res;
     }
   },
