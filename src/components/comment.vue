@@ -69,7 +69,7 @@ export default {
   margin-bottom: 18px;
 }
 .comment-item img{
-  height:280px;
+  height:200px;
 }
 .pic{
   padding-left:0;
