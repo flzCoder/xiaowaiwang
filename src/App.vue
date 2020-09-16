@@ -5,7 +5,7 @@
       <router-link :to="'./message'" v-show="true"><li>新鲜事</li></router-link>
       <router-link :to="'./user'" v-show="isloged.mine"><li><span>个人主页</span></li></router-link>
       <router-link :to="'./index'" v-show="false"><li>首页</li></router-link>
-      <router-link :to="'./friend'" v-show="false"><li>加好友</li></router-link>
+      <router-link :to="'./social'" v-show="isloged.mine"><li>好友</li></router-link>
       <router-link :to="'./recommend'" v-show="false"><li>资讯</li></router-link>
       <router-link :to="'./info'" class="infoNav" v-show="!isloged.btn"><li><span>欢迎您:{{info.name}}</span></li></router-link>
       <router-link :to="'./login'"><li class="enroll"><span v-show="isloged.btn">登录</span><span v-show="!isloged.btn" class="logout" @click.prevent='logout'>退出</span></li></router-link>

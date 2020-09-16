@@ -1,7 +1,7 @@
 <template>
   <li class="comment-item">
     <div class="info">
-      <div class="name" v-text="item.name"></div>
+      <div class="name"><img class="avator" :src="item.avator" /><a :href="userurl" target="_blank" v-text="item.name"></a></div>
       <div class="update_time" v-text="item.update_time"></div>
     </div>
     <div class="content" v-text="item.content"></div>
@@ -27,9 +27,15 @@ export default {
   },
   created() {
   },
+  mounted() {
+  },
   computed: {
     info () {
       return this.$store.state.info;
+    },
+    userurl (val) {
+      let targetUrl = this.item.userid === this.info.id ? '/user' :  `/friend?id=${this.item.userid}`;
+      return targetUrl;
     }
   },
   methods: {
@@ -68,7 +74,7 @@ export default {
   width:100%;
   margin-bottom: 18px;
 }
-.comment-item img{
+.comment-item .pic{
   height:200px;
 }
 .pic{
@@ -77,13 +83,18 @@ export default {
   margin:15px 0;
 }
 .info {
+  position:relative;
   overflow:hidden;
   border-bottom: 1px solid;
   padding-bottom: 3px;
 }
 .name{float:left;}
-.update_time{float:right;}
-
-img{padding-left:600px; width:200px;}
+.name a{text-decoration:none}
+.update_time{
+  bottom: 2px;
+  position: absolute;
+  right: 0;
+}
+.avator {width:30px; margin-right:10px;}
 .delbtn {cursor:pointer;width:42px;margin-bottom:26px;}
 </style>

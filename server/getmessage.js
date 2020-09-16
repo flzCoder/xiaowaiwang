@@ -7,7 +7,7 @@ router.use((req, res, next) => {
   if (userid) {
     tmp = `and userid=${userid}`
   }
-  let sql = `select a.*,b.name from message a left join user b on a.userid = b.id where status=1 ${tmp} order by update_time desc`;
+  let sql = `select a.*,b.name,b.avator from message a left join user b on a.userid = b.id where status=1 ${tmp} order by update_time desc`;
   sqlQuery(sql).then((data) => {
     res.send({
       title: '评论数据',

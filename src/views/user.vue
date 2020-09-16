@@ -22,7 +22,7 @@ export default {
   asyncData () {},
   data() {
     return {
-      title: '个人主页'
+      title: '个人主页',
     }
   },
   components: {
