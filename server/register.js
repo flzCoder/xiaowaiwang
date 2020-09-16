@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const { sqlQuery } = require('./dao')
-const { prefixPath } = require('./originConfig')
+const { prefixPath } = require('./originconfig')
 const crypto = require('./crypto')
 
 router.use((req, res, next) => {
