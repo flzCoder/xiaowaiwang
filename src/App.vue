@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <h3 class="website">校外网</h3>
+    <h3 class="website"><span>FUNNY</span>中国人必备的PC社交网络</h3>
     <ul class='nav'>
-      <router-link :to="'./message'" v-show="true"><li>新鲜事</li></router-link>
+      <router-link :to="'./message'" v-show="true"><li><span>新鲜事</span></li></router-link>
       <router-link :to="'./user'" v-show="isloged.mine"><li><span>个人主页</span></li></router-link>
       <router-link :to="'./index'" v-show="false"><li>首页</li></router-link>
-      <router-link :to="'./social'" v-show="isloged.mine"><li>好友</li></router-link>
+      <router-link :to="'./social'" v-show="isloged.mine"><li><span>好友</span></li></router-link>
       <router-link :to="'./recommend'" v-show="false"><li>资讯</li></router-link>
       <router-link :to="'./info'" class="infoNav" v-show="!isloged.btn"><li><span>欢迎您:{{info.name}}</span></li></router-link>
       <router-link :to="'./login'"><li class="enroll"><span v-show="isloged.btn">登录</span><span v-show="!isloged.btn" class="logout" @click.prevent='logout'>退出</span></li></router-link>
-      <router-link :to="'./register'" v-if="false"><li>注册</li></router-link>
+      <router-link :to="'./register'" v-if="false"><li><span>注册</span></li></router-link>
     </ul>
     <router-view class="view"></router-view>
     <div class="footer">
@@ -100,9 +100,9 @@ export default {
 
 <style lang="stylus">
   *{margin:0;padding:0;}
-  .website{padding: 10px 0 18px 0;}
+  .website{padding: 3px 0 12px 0; color:#1e3e23;}
+  .website span{margin-right:20px; font-size:30px;}
   #app {
-    color: red;
     width:980px;
     margin:0 auto;
   }
@@ -110,11 +110,10 @@ export default {
     margin-left:10px;
     color: #000;
   }
-  h3
-   text-align:center
 
-  .router-link-active li{
-    //color: red;
+  .router-link-active li span{
+    border-bottom: 2px solid red;
+    padding-bottom:2px;
   }
   .view {
     color: #000;
@@ -123,9 +122,9 @@ export default {
     position:absolute; right:50px;
   }
   ul {list-style:none;}
-  .nav {overflow:hidden;margin-bottom:50px;position:relative;}
+  .nav {overflow:hidden;padding-bottom:50px;position:relative;}
   .nav .enroll{position:absolute; right:0;}
-  .nav li {float:left; padding:3px;margin-right:28px;}
+  .nav li {float:left; margin-right:28px;font-size:22px;}
   .footer {text-align:center;}
   .footer a{text-decoration: none;}
 </style>
