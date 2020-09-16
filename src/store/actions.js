@@ -1,7 +1,8 @@
 import {
   fetchMain,
   fetchRecommend,
-  fetchMessage
+  fetchMessage,
+  fetchUserList,
 } from '../api'
 
 export default {
@@ -19,6 +20,12 @@ export default {
   },
   fetchMessage ({ commit }, id) {
     return fetchMessage(id).then(item => {
+      item = item.data
+      commit('setItem', { id, item })
+    })
+  },
+  fetchUserList ({ commit }, id) {
+    return fetchUserList(id).then(item => {
       item = item.data
       commit('setItem', { id, item })
     })
