@@ -50,6 +50,10 @@ export default {
           item: data.res[0].name
         })
         this.$store.commit('setInfo', {
+          id: 'avator',
+          item: data.res[0].avator
+        })
+        this.$store.commit('setInfo', {
           id: 'id',
           item: data.res[0].id
         })
@@ -83,6 +87,10 @@ export default {
           })
           this.$store.commit('setInfo', {
             id: 'name',
+            item: ''
+          })
+          this.$store.commit('setInfo', {
+            id: 'avator',
             item: ''
           })
           this.$store.commit('setInfo', {

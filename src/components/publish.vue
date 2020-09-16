@@ -69,6 +69,7 @@ export default {
                   content: content,
                   update_time: '今天',
                   name: self.info.name,
+                  avator: self.info.avator,
                   pic: pic
                 }
               })
@@ -79,6 +80,7 @@ export default {
                   content: content,
                   update_time: '今天',
                   name: self.info.name,
+                  avator: self.info.avator,
                   pic: pic
                 }
               })

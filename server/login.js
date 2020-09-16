@@ -18,7 +18,7 @@ router.use((req, res, next) => {
           httpOnly: true,
           signed: true
         });
-        res.send({status:1, msg: '登录成功', name: data[0].name, id: data[0].id })
+        res.send({status:1, msg: '登录成功', name: data[0].name, avator: data[0].avator, id: data[0].id })
       } else {
         res.send({status:2, msg: '密码错误'})
       }

@@ -16,6 +16,7 @@ router.use((req, res, next) => {
       httpOnly: true,
       signed: true
     });
+    data.avator = avator;
     res.send({status: 'ok', data: data})
   })
   return;

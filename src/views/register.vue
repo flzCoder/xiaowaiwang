@@ -68,6 +68,10 @@ export default {
               item: this.username
             })
             this.$store.commit('setInfo', {
+              id: 'avator',
+              item: data.data.avator
+            })
+            this.$store.commit('setInfo', {
               id: 'id',
               item: data.data.insertId
             })

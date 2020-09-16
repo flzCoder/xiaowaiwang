@@ -52,6 +52,10 @@ export default {
             item: res.data.name
           })
           this.$store.commit('setInfo', {
+            id: 'avator',
+            item: res.data.avator
+          })
+          this.$store.commit('setInfo', {
             id: 'id',
             item: res.data.id
           })
