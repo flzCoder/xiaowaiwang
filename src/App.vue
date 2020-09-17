@@ -8,8 +8,8 @@
       <router-link :to="'./social'" v-show="true"><li><span>好友</span></li></router-link>
       <router-link :to="'./recommend'" v-show="false"><li>资讯</li></router-link>
       <router-link :to="'./info'" class="infoNav" v-show="!isloged.btn"><li><span>欢迎您:{{info.name}}</span></li></router-link>
+      <router-link :to="'./register'"><li class="register"><span v-show="isloged.btn">注册</span></li></router-link>
       <router-link :to="'./login'"><li class="enroll"><span v-show="isloged.btn">登录</span><span v-show="!isloged.btn" class="logout" @click.prevent='logout'>退出</span></li></router-link>
-      <router-link :to="'./register'" v-if="false"><li><span>注册</span></li></router-link>
     </ul>
     <router-view class="view"></router-view>
     <div class="footer">
@@ -131,6 +131,7 @@ export default {
   }
   ul {list-style:none;}
   .nav {overflow:hidden;padding-bottom:50px;position:relative;}
+  .nav .register{position:absolute; right:69px;}
   .nav .enroll{position:absolute; right:0;}
   .nav li {float:left; margin-right:28px;font-size:22px;}
   .footer {text-align:center;}
