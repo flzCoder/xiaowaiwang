@@ -8,7 +8,10 @@ router.use((req, res, next) => {
   let pic = req.body.pic;
   let sql = `INSERT INTO message ( userid, pic, content ) VALUES ( '${userid}', '${pic}', '${content}' );`;
   sqlQuery(sql).then((data) => {
-    res.send({status: 'ok'})
+    res.send({
+      status: 'ok',
+      id: data.insertId
+    })
   })
   return;
 });

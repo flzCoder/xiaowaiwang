@@ -54,7 +54,7 @@ export default {
       let pic = this.preloadurl;
       let userid = this.info.id;
       let self = this;
-      if (content && userid) {
+      if ((content || pic) && userid) {
         axios.post(`${prefixPath}/postMessage`, {
             content: content,
             userid: userid,
@@ -70,7 +70,8 @@ export default {
                   update_time: '今天',
                   name: self.info.name,
                   avator: self.info.avator,
-                  pic: pic
+                  pic: pic,
+                  id: response.data.id
                 }
               })
             } else if (path === '/message') {
@@ -81,7 +82,8 @@ export default {
                   update_time: '今天',
                   name: self.info.name,
                   avator: self.info.avator,
-                  pic: pic
+                  pic: pic,
+                  id: response.data.id
                 }
               })
             }

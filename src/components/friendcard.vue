@@ -25,9 +25,7 @@ export default {
     }
   },
   props: ['itemData'],
-  created() {
-    console.log('itemData',this.itemData);
-  },
+  created() {},
   computed: {
 
   },
