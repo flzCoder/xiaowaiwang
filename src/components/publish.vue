@@ -1,6 +1,6 @@
 <template>
 <div class="commentInput" v-show="!!info.id">
-  <textarea placeholder="今天有什么新鲜事" name="name" v-model="message" rows="8" cols="80"></textarea>
+  <textarea placeholder="今天你funny了吗" name="name" v-model="message" rows="8" cols="80"></textarea>
   <div class="btn" @click='post'>发布</div>
   <label for="imgfile" class="imgfile">上传图片</label>
   <input type="file" name="imgfile" ref="imgfile" @change="dealFile()" v-show="false" id="imgfile" value="imgfile" />
