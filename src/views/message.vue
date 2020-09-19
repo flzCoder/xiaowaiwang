@@ -24,6 +24,10 @@ export default {
   },
   created() {
   },
+  computed() {
+  },
+  mounted() {
+  },
   methods: {},
   title () {
     return this.title
