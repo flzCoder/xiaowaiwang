@@ -3,10 +3,10 @@ module.exports = {
     name: "mudan",
     script: "./index.js",
     env: {
-      NODE_ENV: "dev",
+      NODE_ENV: "development",
     },
     env_prod: {
-      NODE_ENV: "prod",
+      NODE_ENV: "production",
     }
   }]
 }

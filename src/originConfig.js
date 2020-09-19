@@ -1,20 +1,14 @@
 const originConfig = {
-  dev: {
+  development: {
     protocal: 'http',
     domain: 'flz.mudan.com',
     ip: '127.0.0.1',
-    port: '8088'
-  },
-  prod: {
-    protocal: 'http',
-    domain: '',
-    ip: '47.93.34.232',
     port: '8088'
   },
   production: {
     protocal: 'http',
-    domain: 'flz.mudan.com',
-    ip: '127.0.0.1',
+    domain: '',
+    ip: '47.93.34.232',
     port: '8088'
   }
 }
