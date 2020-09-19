@@ -11,6 +11,7 @@ usage()
     echo "stop: 停止服务"
     echo "restart: 重启服务"
     echo "pull: 拉取github文件"
+    echo "redeploy: 在项目目录 pull stop online"
     echo "login: 登录阿里云主机"
     echo "exportDB: 导出线上数据库"
     exit 1
@@ -29,6 +30,11 @@ restart() {
 }
 pull(){
     git pull origin master
+}
+redeploy(){
+    pull;
+    stop;
+    online;
 }
 login(){
     ssh root@47.93.34.232 -p22
