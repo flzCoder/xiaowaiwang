@@ -22,7 +22,7 @@ export default {
       title: '新鲜事'
     }
   },
-  beforeMount() {
+  created() {
     axios.get(`${prefixPath}/getInfo`)
     .then((res) =>{
       let data = res.data;
