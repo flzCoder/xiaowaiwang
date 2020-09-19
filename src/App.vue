@@ -7,9 +7,9 @@
       <router-link :to="'./index'" v-show="false"><li>首页</li></router-link>
       <router-link :to="'./social'" v-show="true"><li><span>好友</span></li></router-link>
       <router-link :to="'./recommend'" v-show="false"><li>资讯</li></router-link>
-      <router-link :to="'./info'" class="infoNav" v-show="!isloged.btn"><li><span>欢迎您:{{info.name}}</span></li></router-link>
+      <router-link :to="'./info'" class="infoNav" v-show="isloged.mine"><li><span>欢迎您:{{info.name}}</span></li></router-link>
       <router-link :to="'./register'"><li class="register"><span v-show="isloged.btn">注册</span></li></router-link>
-      <router-link :to="'./login'"><li class="enroll"><span v-show="isloged.btn">登录</span><span v-show="!isloged.btn" class="logout" @click.prevent='logout'>退出</span></li></router-link>
+      <router-link :to="'./login'"><li class="enroll"><span v-show="isloged.btn">登录</span><span v-show="isloged.mine" class="logout" @click.prevent='logout'>退出</span></li></router-link>
     </ul>
     <router-view class="view"></router-view>
     <div class="footer">
@@ -36,45 +36,44 @@ export default {
     }
   },
   created() {
-    console.log('1.5');
   },
   beforeMount() {
 
   },
   mounted() {
-    // axios.get(`${prefixPath}/getInfo`)
-    // .then((res) =>{
-    //   let data = res.data;
-    //   if (data.code === 200) {
-    //     this.$store.commit('setInfo', {
-    //       id: 'name',
-    //       item: data.res[0].name
-    //     })
-    //     this.$store.commit('setInfo', {
-    //       id: 'avator',
-    //       item: data.res[0].avator
-    //     })
-    //     this.$store.commit('setInfo', {
-    //       id: 'id',
-    //       item: data.res[0].id
-    //     })
-    //     this.$store.commit('setLoged', {
-    //       mine: true,
-    //       btn: false
-    //     })
-    //   } else {
-    //     this.$store.commit('setLoged', {
-    //       mine: false,
-    //       btn: true
-    //     })
-    //   }
-    // })
-    // .catch((err) => {
-    //   this.$store.commit('setLoged', {
-    //     mine: false,
-    //     btn: true
-    //   })
-    // })
+    axios.get(`${prefixPath}/getInfo`)
+    .then((res) =>{
+      let data = res.data;
+      if (data.code === 200) {
+        this.$store.commit('setInfo', {
+          id: 'name',
+          item: data.res[0].name
+        })
+        this.$store.commit('setInfo', {
+          id: 'avator',
+          item: data.res[0].avator
+        })
+        this.$store.commit('setInfo', {
+          id: 'id',
+          item: data.res[0].id
+        })
+        this.$store.commit('setLoged', {
+          mine: true,
+          btn: false
+        })
+      } else {
+        this.$store.commit('setLoged', {
+          mine: false,
+          btn: true
+        })
+      }
+    })
+    .catch((err) => {
+      this.$store.commit('setLoged', {
+        mine: false,
+        btn: true
+      })
+    })
   },
   methods: {
     logout() {
