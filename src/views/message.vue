@@ -13,6 +13,8 @@
 import comment from '../components/comment.vue'
 import publishThing from '../components/publish.vue'
 import { EventBus } from '../store/eventBus'
+import { prefixPath } from '../originConfig'
+import axios from 'axios'
 
 export default {
   data() {
@@ -20,7 +22,42 @@ export default {
       title: '新鲜事'
     }
   },
-  mounted() {},
+  beforeMount() {
+    axios.get(`${prefixPath}/getInfo`)
+    .then((res) =>{
+      let data = res.data;
+      console.log('data.code',data.code);
+      if (data.code === 200) {
+        this.$store.commit('setInfo', {
+          id: 'name',
+          item: data.res[0].name
+        })
+        this.$store.commit('setInfo', {
+          id: 'avator',
+          item: data.res[0].avator
+        })
+        this.$store.commit('setInfo', {
+          id: 'id',
+          item: data.res[0].id
+        })
+        this.$store.commit('setLoged', {
+          mine: true,
+          btn: false
+        })
+      } else {
+        this.$store.commit('setLoged', {
+          mine: false,
+          btn: true
+        })
+      }
+    })
+    .catch((err) => {
+      this.$store.commit('setLoged', {
+        mine: false,
+        btn: true
+      })
+    })
+  },
   methods: {},
   title () {
     return this.title
