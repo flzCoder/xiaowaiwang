@@ -48,6 +48,6 @@ router.onReady(() => {
   app.$mount('#app')
 })
 
-if ('https:' === location.protocol && navigator.serviceWorker) {
+if ('http:' === location.protocol && navigator.serviceWorker) {
   navigator.serviceWorker.register('/service-worker.js')
 }

@@ -13,7 +13,7 @@ usage()
     echo "pull: 拉取github文件"
     echo "build: 打包上线文件"
     echo "push: 推入github文件"
-    echo "deploy: 在项目目录 pull stop online"
+    echo "deploy: 在项目目录 pull build stop online"
     echo "login: 登录阿里云主机"
     echo "exportDB: 导出线上数据库"
     exit 1
