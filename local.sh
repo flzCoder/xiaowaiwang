@@ -12,7 +12,7 @@ usage()
     echo "restart: 重启服务"
     echo "pull: 拉取github文件"
     echo "push: 推入github文件"
-    echo "redeploy: 在项目目录 pull stop online"
+    echo "deploy: 在项目目录 pull stop online"
     echo "login: 登录阿里云主机"
     echo "exportDB: 导出线上数据库"
     exit 1
@@ -37,7 +37,7 @@ push(){
     git commit -m 'init'
     git push origin master
 }
-redeploy(){
+deploy(){
     pull;
     stop;
     online;
