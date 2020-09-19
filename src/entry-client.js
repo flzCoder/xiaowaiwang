@@ -5,7 +5,7 @@ import { prefixPath } from './originConfig'
 import axios from 'axios'
 
 
-
+console.log(111);
 
 Vue.mixin({
   beforeRouteUpdate (to, from, next) {

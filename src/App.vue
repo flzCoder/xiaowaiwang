@@ -36,6 +36,7 @@ export default {
     }
   },
   created() {
+    console.log('1.5');
   },
   beforeMount() {
 
