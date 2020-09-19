@@ -1,7 +1,7 @@
 <template>
   <li class="comment-item">
     <div class="info">
-      <div class="name"><img class="avator" :src="item.avator" /><a :href="userurl" target="_blank" v-text="item.name"></a></div>
+      <div class="name"><img class="avator" :src="avator" /><a :href="userurl" target="_blank" v-text="item.name"></a></div>
       <div class="update_time" v-text="item.update_time"></div>
     </div>
     <div class="content" v-text="item.content"></div>
@@ -23,12 +23,14 @@ export default {
   data() {
     return {
       title: '子孙标题',
-      realSrc: ''
+      realSrc: '',
+      avator: ""
     }
   },
   created() {
   },
   mounted() {
+    this.avator = this.item.avator;
     this.realSrc = this.item.pic;
   },
   computed: {
