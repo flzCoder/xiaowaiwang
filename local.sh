@@ -11,6 +11,7 @@ usage()
     echo "stop: 停止服务"
     echo "restart: 重启服务"
     echo "pull: 拉取github文件"
+    echo "build: 打包上线文件"
     echo "push: 推入github文件"
     echo "deploy: 在项目目录 pull stop online"
     echo "login: 登录阿里云主机"
@@ -32,6 +33,9 @@ restart() {
 pull(){
     git pull origin master
 }
+build(){
+    npm run build
+}
 push(){
     git add .
     git commit -m 'init'
@@ -39,6 +43,7 @@ push(){
 }
 deploy(){
     pull;
+    build;
     stop;
     online;
 }
