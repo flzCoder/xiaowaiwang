@@ -3,7 +3,7 @@ INSERT INTO wap3g_news ( title, content, pic ) VALUES ( '长三角一体化发�
 INSERT INTO user ( name, password, avator ) VALUES ( 'f77', '94f186bda48c0fecfa6fffcabe472776', 'http://flz.mudan.com:8088/public/avator/7.jpg' );
 DELETE FROM wap3g_news;
 UPDATE message SET name = '';
-UPDATE wap3g_comment SET status = 1 WHERE title = '长三角一体化发展如何推进？习近平再次强调两个关键词';
+UPDATE social SET status = 1 WHERE title = '长三角一体化发展如何推进？习近平再次强调两个关键词';
 select * from wap3g_news;
 select a.*,b.name from message a left join user b on a.userid = b.id;
 
@@ -11,7 +11,7 @@ alter table wap3g_news add column create_time timestamp default value;
 ALTER TABLE message ADD column userid int(11);
 ALTER TABLE user ADD column avator varchar(2024) NOT NULL COMMENT '头像'
 alter table message drop column name;
-ALTER TABLE wap3g_comment ALTER status SET DEFAULT 1;
+ALTER TABLE social ALTER status SET DEFAULT 0;
 
 增加属性
 ALTER TABLE wap3g_comment ADD status INT;
@@ -58,14 +58,29 @@ CREATE TABLE `social` (
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COMMENT='好友关系表'
 
+CREATE TABLE `social` (
+`id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+`userid` int(11) NOT NULL COMMENT '被申请人id',
+`friendid` int(11) NOT NULL COMMENT '申请人id',
+`status` int(11) NOT NULL COMMENT '申请关系状态 0:申请中 1:同意 2:拒绝 3:屏蔽',
+`update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COMMENT='好友关系表'
+
 ALTER TABLE `social` ADD INDEX userid ( `column` )
 唯一所以可以有多个，前提是该索引列是唯一的。
 alter table social add unique userid (userid);
 
 
 alter table user AUTO_INCREMENT=10000;
-alter table wap3g_comment rename to message;
+alter table social rename to socialold;
 RENAME database netease_news TO xiaowaiwang
 
 修改数据库密码
 winpty mysqladmin -uroot -p111111 password root
+
+添加联合唯一约束
+ALTER TABLE social ADD UNIQUE KEY(userid, friendid);
+
+INSERT INTO social ( userid, friendid ) VALUES ( 100, 200 );
+SHOW CREATE TABLE social

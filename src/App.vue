@@ -38,7 +38,6 @@ export default {
   created() {
   },
   beforeMount() {
-
   },
   mounted() {
     axios.get(`${prefixPath}/getInfo`)

@@ -42,9 +42,8 @@ const config = merge(base, {
 
 if (process.env.NODE_ENV === 'production') {
   config.plugins.push(
-    // auto generate service worker
     new SWPrecachePlugin({
-      cacheId: 'vue-hn',
+      cacheId: 'funny',
       filename: 'service-worker.js',
       minify: true,
       dontCacheBustUrlsMatching: /./,
@@ -55,15 +54,7 @@ if (process.env.NODE_ENV === 'production') {
           handler: 'networkFirst'
         },
         {
-          urlPattern: /\/(top|new|show|ask|jobs)/,
-          handler: 'networkFirst'
-        },
-        {
-          urlPattern: '/item/:id',
-          handler: 'networkFirst'
-        },
-        {
-          urlPattern: '/user/:id',
+          urlPattern: /\/(message|friend|social|user|info)/,
           handler: 'networkFirst'
         }
       ]

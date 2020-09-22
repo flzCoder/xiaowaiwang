@@ -34,13 +34,13 @@ var utils = {
         if (err) {
           console.error('error connecting: ' + err.stack);
           connection.end();
-          reject();
+          reject(err);
         }
         connection.query(query, (error, results, fields) => {
           if (error) {
-            throw error;
+            reject(error);
             connection.end();
-            reject();
+            return;
           }
           connection.end();
           if (results.map) {
