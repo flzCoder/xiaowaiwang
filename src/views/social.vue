@@ -1,14 +1,6 @@
 <template>
   <div class="friend">
-    <div class="apply" v-if='applyedlist.length'>
-      <h3>被好友申请</h3>
-      <ul class='friendStatus applyedFriend'>
-        <template v-for="(item, i) in applyedlist">
-          <friend-card :key="i" :item-data="item" :type='"res"'></friend-card>
-        </template>
-      </ul>
-    </div>
-    <div class="apply" v-if='applyinglist.length'>
+    <div class="applying" v-if='applyinglist.length'>
       <h3>主动申请好友</h3>
       <ul class='friendStatus applyingFriend'>
         <template v-for="(item, i) in applyinglist">
@@ -21,6 +13,14 @@
       <ul class='friendStatus'>
         <template v-for="(item, i) in agreelist">
           <friend-card :key="i" :item-data="item" :type='"agree"'></friend-card>
+        </template>
+      </ul>
+    </div>
+    <div class="applyed" v-if='applyedlist.length'>
+      <h3>被好友申请</h3>
+      <ul class='friendStatus applyedFriend'>
+        <template v-for="(item, i) in applyedlist">
+          <friend-card :key="i" :item-data="item" :type='"res"'></friend-card>
         </template>
       </ul>
     </div>
@@ -103,8 +103,6 @@ export default {
       axios.get(`${prefixPath}/getSoicalList?userid=${id}`)
       .then((res) =>{
         let socialData = res.data.res;
-        console.log(123,socialData);
-
         this.applyedlist = socialData.filter(item => {
           return item.status === 0;
         });

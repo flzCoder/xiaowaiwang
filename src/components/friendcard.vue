@@ -97,7 +97,7 @@ export default {
 .agree .card, .block .card, .refuse .card {
   height: 188px;
 }
-.apply .card {
+.applying .card {
   height: 227px;
 }
 .top {
