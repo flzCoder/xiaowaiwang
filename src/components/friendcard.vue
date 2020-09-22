@@ -55,9 +55,9 @@ export default {
     dealapplying() {
       let status = this.itemData.status
       if (status === 1) {
-        this.reciveresult = '已同意'
+        this.reciveresult = '对方已同意'
       } else if (status === 2 || status === 3) {
-        this.reciveresult = '已拒绝'
+        this.reciveresult = '对方已拒绝'
       }
     },
     addfriend() {
