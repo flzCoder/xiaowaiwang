@@ -34,7 +34,7 @@ export default {
       title: '好友名片',
       btnTxt: '加好友',
       replayedTxt: '',
-      reciveresult: '好友申请已发送',
+      reciveresult: '已向对方发申请',
       applyedType: false
     }
   },

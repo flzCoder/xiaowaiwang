@@ -40,7 +40,7 @@
         </template>
       </ul>
     </div>
-    <div class="rec" v-if='list.length'>
+    <div class="rec" v-if='list.length && false'>
       <h3>推荐好友</h3>
       <ul class='friendStatus recommendFriend'>
         <template v-for="(item, i) in list">
