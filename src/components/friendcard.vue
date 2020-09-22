@@ -9,8 +9,8 @@
       <div class="num" v-if="type === 'res'">编号：<span v-text="itemData.friendid"></span></div>
     </div>
     <div class="addBtn" v-if="type === 'rec'" @click='addfriend' v-text="btnTxt"></div>
-    <div class="reqstatus" v-if="type === 'req'" v-text="reciveresult"></div>
-    <div class="resBtn" v-if="type === 'res' || type === 'req'">
+    <div class="reqstatus" v-if="type === 'req' && !applyedType" v-text="reciveresult"></div>
+    <div class="resBtn" v-if="type === 'res' || applyedType">
       <div class="replaybtn" v-show='!replayedTxt'>
         <a class="agree" @click='reply(1)'>同意</a>
         <a class="refuse" @click='reply(2)'>拒绝</a>
@@ -34,12 +34,16 @@ export default {
       title: '好友名片',
       btnTxt: '加好友',
       replayedTxt: '',
-      reciveresult: '好友申请已发送'
+      reciveresult: '好友申请已发送',
+      applyedType: false
     }
   },
   props: ['itemData', 'type'],
   created() {},
   mounted() {
+    if (this.type ==='req' && (this.itemData.friendid !== this.info.id) && (this.itemData.status === 0)) {
+      this.applyedType = true;
+    }
     this.dealapplying();
   },
   computed: {
