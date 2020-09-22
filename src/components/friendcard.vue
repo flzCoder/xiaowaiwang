@@ -10,7 +10,7 @@
     </div>
     <div class="addBtn" v-if="type === 'rec'" @click='addfriend' v-text="btnTxt"></div>
     <div class="reqstatus" v-if="type === 'req'" v-text="reciveresult"></div>
-    <div class="resBtn" v-if="type === 'res'">
+    <div class="resBtn" v-if="type === 'res' || type === 'req'">
       <div class="replaybtn" v-show='!replayedTxt'>
         <a class="agree" @click='reply(1)'>同意</a>
         <a class="refuse" @click='reply(2)'>拒绝</a>

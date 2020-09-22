@@ -1,7 +1,7 @@
 <template>
   <div class="friend">
     <div class="applying" v-if='applyinglist.length'>
-      <h3>主动申请好友</h3>
+      <h3>申请信息</h3>
       <ul class='friendStatus applyingFriend'>
         <template v-for="(item, i) in applyinglist">
           <friend-card :key="i" :item-data="item" :type='"req"'></friend-card>
@@ -16,7 +16,7 @@
         </template>
       </ul>
     </div>
-    <div class="applyed" v-if='applyedlist.length'>
+    <div class="applyed" v-if='applyedlist.length && false'>
       <h3>被好友申请</h3>
       <ul class='friendStatus applyedFriend'>
         <template v-for="(item, i) in applyedlist">
@@ -24,7 +24,7 @@
         </template>
       </ul>
     </div>
-    <div class="refuse" v-if='refuselist.length'>
+    <div class="refuse" v-if='refuselist.length && false'>
       <h3>拒绝名单</h3>
       <ul class='friendStatus'>
         <template v-for="(item, i) in refuselist">
@@ -32,7 +32,7 @@
         </template>
       </ul>
     </div>
-    <div class="block" v-if='blocklist.length'>
+    <div class="block" v-if='blocklist.length && false'>
       <h3>屏蔽名单</h3>
       <ul class='friendStatus'>
         <template v-for="(item, i) in blocklist">
@@ -103,20 +103,20 @@ export default {
       axios.get(`${prefixPath}/getSoicalList?userid=${id}`)
       .then((res) =>{
         let socialData = res.data.res;
-        this.applyedlist = socialData.filter(item => {
-          return item.status === 0 && item.friendid !== this.info.id;
-        });
         this.applyinglist = socialData.filter(item => {
-          return item.friendid === this.info.id;
+          return (item.friendid === this.info.id) || item.status === 0;
         });
         this.agreelist = socialData.filter(item => {
           return item.status === 1;
         });
+        this.applyedlist = socialData.filter(item => {
+          return item.status === 0 && item.friendid !== this.info.id;
+        });
         this.refuselist = socialData.filter(item => {
-          return item.status === 2;
+          return item.status === 2 && item.friendid !== this.info.id;;
         });
         this.blocklist = socialData.filter(item => {
-          return item.status === 3;
+          return item.status === 3 && item.friendid !== this.info.id;;
         });
       })
       .catch((err) => {
