@@ -104,7 +104,7 @@ export default {
       .then((res) =>{
         let socialData = res.data.res;
         this.applyedlist = socialData.filter(item => {
-          return item.status === 0;
+          return item.status === 0 && item.friendid !== this.info.id;
         });
         this.applyinglist = socialData.filter(item => {
           return item.friendid === this.info.id;
