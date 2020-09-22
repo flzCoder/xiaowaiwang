@@ -39,27 +39,43 @@ export default {
   },
   props: ['itemData', 'type'],
   created() {},
+  mounted() {
+    this.dealapplying();
+  },
   computed: {
     info () {
       return this.$store.state.info;
     }
   },
   methods: {
+    dealapplying() {
+      let status = this.itemData.status
+      if (status === 1) {
+        this.reciveresult = '已同意'
+      } else if (status === 2 || status === 3) {
+        this.reciveresult = '已拒绝'
+      }
+    },
     addfriend() {
       this.btnTxt = '申请已发送';
-      axios({
-          method: 'post',
-          url: `${prefixPath}/addfriend`,
-          data: {
-            'userid': this.itemData.id,
-            'friendid': this.info.id
-          }
-        }).then(function(response) {
-          console.log('response',response);
-        })
-        .catch(function(error) {
-          console.log('error', error);
-        });
+      if (this.info.id) {
+        axios({
+            method: 'post',
+            url: `${prefixPath}/addfriend`,
+            data: {
+              'userid': this.itemData.id,
+              'friendid': this.info.id
+            }
+          }).then(function(response) {
+            console.log('response',response);
+          })
+          .catch(function(error) {
+            console.log('error', error);
+          });
+      } else {
+        alert('请先登录')
+      }
+
     },
     reply(status) {
       let self = this;
