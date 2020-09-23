@@ -4,7 +4,6 @@ const { sqlQuery } = require('./dao')
 
 router.use((req, res, next) => {
   let username = req.query.username;
-  console.log('username',username);
   let sql = `select * from user where name = '${username}' `;
   sqlQuery(sql).then((data) => {
     if (data.length) {

@@ -9,7 +9,7 @@
     </div>
     <div class="btntips">
       <div class="normal" v-if="type === 'rec'" @click='addfriend' v-text="btnTxt"></div>
-      <div class="request" v-if="(type === 'req' && !applyedType) || (type === 'total' && applystyle)" v-text="reciveresult"></div>
+      <div :class="'request ' + reqresult" v-if="(type === 'req' && !applyedType) || (type === 'total' && applystyle)" v-text="reciveresult"></div>
       <div class="response" v-if="(type === 'res' || applyedType) || (type === 'total' && !applystyle)">
         <div class="replaybtn" v-show='!replayedTxt'>
           <a class="agree" @click='reply(1)'>同意</a>
@@ -34,6 +34,7 @@ export default {
     return {
       title: '好友名片',
       friendid: '',
+      reqresult: '',
       btnTxt: '加好友',
       replayedTxt: '',
       reciveresult: '已向对方发申请',
@@ -64,8 +65,10 @@ export default {
     dealapplying() {
       let status = this.itemData.status
       if (status === 1) {
+        this.reqresult = 'reqresult'
         this.reciveresult = '对方已同意'
       } else if (status === 2 || status === 3) {
+        this.reqresult = 'reqresult'
         this.reciveresult = '对方已拒绝'
       }
     },
@@ -156,6 +159,9 @@ export default {
   width: 89%;
   font-size: 12px;
 }
+.total .reqresult, .total .responseResult {
+  border: 1px solid #2932e1;
+}
 .agree .card, .block .card, .refuse .card {
   height: 210px;
 }
@@ -183,8 +189,8 @@ export default {
   line-height:33px;
   margin:12px auto 0;
   border-radius:3px;
-  border:1px solid #FF0000;
-  color:#FF0000;
+  border:1px solid #e10602;
+  color:#e10602;
   font-size:20px;
   background:#fff;
   cursor:pointer;
