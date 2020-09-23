@@ -133,6 +133,25 @@ export default {
   border: 1px solid #848484;
   border-radius: 3px;
 }
+.total {
+  width: 101px;
+  height: 187px;
+}
+.total .top {
+  height: 102px;
+}
+.total .info {
+  font-size: 15px;
+}
+.total .replaybtn {
+  height: 12px;
+}
+.total .request, .total .responseResult {
+  height: 16px;
+  line-height: 16px;
+  width: 89%;
+  font-size: 12px;
+}
 .agree .card, .block .card, .refuse .card {
   height: 210px;
 }
