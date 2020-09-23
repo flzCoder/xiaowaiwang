@@ -44,12 +44,9 @@ export default {
   props: ['itemData', 'type'],
   created() {},
   mounted() {
-    if (this.type ==='req' && (this.itemData.friendid !== this.info.id) && (this.itemData.status === 0)) {
-      this.applyedType = true;
-    }
-    this.friendid = this.itemData.friendid === this.info.id ? this.itemData.userid : this.itemData.friendid;
-    this.applystyle = !!(this.itemData.friendid === this.info.id);
+    this.dealinit();
     this.dealapplying();
+    this.dealapplyed();
   },
   computed: {
     info () {
@@ -57,12 +54,29 @@ export default {
     }
   },
   methods: {
+    dealinit() {
+      if (this.type ==='req' && (this.itemData.friendid !== this.info.id) && (this.itemData.status === 0)) {
+        this.applyedType = true;
+      }
+      this.friendid = this.itemData.friendid === this.info.id ? this.itemData.userid : this.itemData.friendid;
+      this.applystyle = !!(this.itemData.friendid === this.info.id);
+    },
     dealapplying() {
       let status = this.itemData.status
       if (status === 1) {
         this.reciveresult = '对方已同意'
       } else if (status === 2 || status === 3) {
         this.reciveresult = '对方已拒绝'
+      }
+    },
+    dealapplyed() {
+      let status = this.itemData.status
+      if (status === 1) {
+        this.replayedTxt = '已同意'
+      } else if (status === 2) {
+        this.replayedTxt = '已拒绝'
+      } else if (status === 3) {
+        this.replayedTxt = '已屏蔽'
       }
     },
     addfriend() {
@@ -163,7 +177,7 @@ export default {
   border:1px solid #000;
 }
 .response {
-  margin-top:17px;
+  margin-top:13px;
 }
 .response a{
   cursor:pointer;
