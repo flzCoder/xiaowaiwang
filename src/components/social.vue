@@ -161,6 +161,7 @@ export default {
 }
 .total .reqresult, .total .responseResult {
   border: 1px solid #2932e1;
+  color:#2932e1;
 }
 .agree .card, .block .card, .refuse .card {
   height: 210px;
