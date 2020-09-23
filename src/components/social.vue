@@ -5,18 +5,19 @@
     </div>
     <div class="info">
       <div class="nickname">姓名：<span v-text="itemData.name"></span></div>
-      <div class="num" v-if="type === 'rec'">编号：<span v-text="itemData.id"></span></div>
-      <div class="num" v-if="type === 'res'">编号：<span v-text="itemData.friendid"></span></div>
+      <div class="num">编号：<span v-text="friendid"></span></div>
     </div>
-    <div class="addBtn" v-if="type === 'rec'" @click='addfriend' v-text="btnTxt"></div>
-    <div class="reqstatus" v-if="type === 'req' && !applyedType" v-text="reciveresult"></div>
-    <div class="resBtn" v-if="type === 'res' || applyedType">
-      <div class="replaybtn" v-show='!replayedTxt'>
-        <a class="agree" @click='reply(1)'>同意</a>
-        <a class="refuse" @click='reply(2)'>拒绝</a>
-        <a class="block" @click='reply(3)'>屏蔽</a>
+    <div class="btntips">
+      <div class="normal" v-if="type === 'rec'" @click='addfriend' v-text="btnTxt"></div>
+      <div class="request" v-if="(type === 'req' && !applyedType) || (type === 'total' && applystyle)" v-text="reciveresult"></div>
+      <div class="response" v-if="(type === 'res' || applyedType) || (type === 'total' && !applystyle)">
+        <div class="replaybtn" v-show='!replayedTxt'>
+          <a class="agree" @click='reply(1)'>同意</a>
+          <a class="refuse" @click='reply(2)'>拒绝</a>
+          <a class="block" @click='reply(3)'>屏蔽</a>
+        </div>
+        <div class="normal" v-show='replayedTxt' v-text="replayedTxt"></div>
       </div>
-      <div class="addBtn" v-show='replayedTxt' v-text="replayedTxt"></div>
     </div>
   </li>
 </template>
@@ -32,10 +33,12 @@ export default {
   data() {
     return {
       title: '好友名片',
+      friendid: '',
       btnTxt: '加好友',
       replayedTxt: '',
       reciveresult: '已向对方发申请',
-      applyedType: false
+      applyedType: false,
+      applystyle: false,
     }
   },
   props: ['itemData', 'type'],
@@ -44,6 +47,8 @@ export default {
     if (this.type ==='req' && (this.itemData.friendid !== this.info.id) && (this.itemData.status === 0)) {
       this.applyedType = true;
     }
+    this.friendid = this.itemData.friendid === this.info.id ? this.itemData.userid : this.itemData.friendid;
+    this.applystyle = !!(this.itemData.friendid === this.info.id);
     this.dealapplying();
   },
   computed: {
@@ -115,7 +120,7 @@ export default {
   border-radius: 3px;
 }
 .agree .card, .block .card, .refuse .card {
-  height: 188px;
+  height: 210px;
 }
 .applying .card {
   height: 227px;
@@ -134,7 +139,7 @@ export default {
 .nickname, .num{
   padding: 2px 0;
 }
-.addBtn, .reqstatus{
+.normal, .request{
   width: 76%;
   text-align:center;
   height:33px;
@@ -147,20 +152,20 @@ export default {
   background:#fff;
   cursor:pointer;
 }
-.reqstatus{
+.request{
   height:24px;
   line-height:24px;
   width: 82%;
   font-size:16px;
 }
-.addBtn:active, .resBtn a:active{
+.normal:active, .response a:active{
   color:#000;
   border:1px solid #000;
 }
-.resBtn {
+.response {
   margin-top:17px;
 }
-.resBtn a{
+.response a{
   cursor:pointer;
   border-radius:3px;
   border:1px solid #FF0000;

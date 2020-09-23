@@ -1,10 +1,10 @@
 <template>
   <div class="friend">
-    <div class="applying" v-if='applyinglist.length'>
+    <div class="applyinfo" v-if='applytotallist.length'>
       <h3>申请信息</h3>
-      <ul class='friendStatus applyingFriend'>
-        <template v-for="(item, i) in applyinglist">
-          <friend-card :key="i" :item-data="item" :type='"req"'></friend-card>
+      <ul class='friendStatus applyinfo'>
+        <template v-for="(item, i) in applytotallist">
+          <social-card :key="i" :item-data="item" :type='"total"'></social-card>
         </template>
       </ul>
     </div>
@@ -12,7 +12,15 @@
       <h3>我的好友</h3>
       <ul class='friendStatus'>
         <template v-for="(item, i) in agreelist">
-          <friend-card :key="i" :item-data="item" :type='"agree"'></friend-card>
+          <social-card :key="i" :item-data="item" :type='"agree"'></social-card>
+        </template>
+      </ul>
+    </div>
+    <div class="applying" v-if='applyinglist.length && false'>
+      <h3>主动申请好友</h3>
+      <ul class='friendStatus applyingFriend'>
+        <template v-for="(item, i) in applyinglist">
+          <social-card :key="i" :item-data="item" :type='"req"'></social-card>
         </template>
       </ul>
     </div>
@@ -20,7 +28,7 @@
       <h3>被好友申请</h3>
       <ul class='friendStatus applyedFriend'>
         <template v-for="(item, i) in applyedlist">
-          <friend-card :key="i" :item-data="item" :type='"res"'></friend-card>
+          <social-card :key="i" :item-data="item" :type='"res"'></social-card>
         </template>
       </ul>
     </div>
@@ -28,7 +36,7 @@
       <h3>拒绝名单</h3>
       <ul class='friendStatus'>
         <template v-for="(item, i) in refuselist">
-          <friend-card :key="i" :item-data="item" :type='"refuse"'></friend-card>
+          <social-card :key="i" :item-data="item" :type='"refuse"'></social-card>
         </template>
       </ul>
     </div>
@@ -36,7 +44,7 @@
       <h3>屏蔽名单</h3>
       <ul class='friendStatus'>
         <template v-for="(item, i) in blocklist">
-          <friend-card :key="i" :item-data="item" :type='"block"'></friend-card>
+          <social-card :key="i" :item-data="item" :type='"block"'></social-card>
         </template>
       </ul>
     </div>
@@ -44,7 +52,7 @@
       <h3>推荐好友</h3>
       <ul class='friendStatus recommendFriend'>
         <template v-for="(item, i) in list">
-          <friend-card :key="i" :item-data="item" :type='"rec"'></friend-card>
+          <social-card :key="i" :item-data="item" :type='"rec"'></social-card>
         </template>
       </ul>
     </div>
@@ -54,7 +62,7 @@
 <script>
 import axios from 'axios'
 import { prefixPath } from '../originConfig'
-import friendCard from '../components/friendcard.vue'
+import socialCard from '../components/social.vue'
 
 export default {
   title () {
@@ -66,6 +74,7 @@ export default {
   data() {
     return {
       title: '寻找好友',
+      applytotallist: [],
       applyedlist: [],
       applyinglist: [],
       agreelist: [],
@@ -96,15 +105,16 @@ export default {
     }
   },
   components: {
-    friendCard
+    socialCard
   },
   methods: {
     getSoicalList(id) {
       axios.get(`${prefixPath}/getSoicalList?userid=${id}`)
       .then((res) =>{
         let socialData = res.data.res;
+        this.applytotallist = socialData;
         this.applyinglist = socialData.filter(item => {
-          return (item.friendid === this.info.id) || item.status === 0;
+          return (item.friendid === this.info.id);
         });
         this.agreelist = socialData.filter(item => {
           return item.status === 1;
