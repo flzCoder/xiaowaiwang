@@ -16,7 +16,7 @@
           <a class="refuse" @click='reply(2)'>拒绝</a>
           <a class="block" @click='reply(3)'>屏蔽</a>
         </div>
-        <div class="normal" v-show='replayedTxt' v-text="replayedTxt"></div>
+        <div class="normal responseResult" v-show='replayedTxt' v-text="replayedTxt"></div>
       </div>
     </div>
   </li>
@@ -166,7 +166,7 @@ export default {
   background:#fff;
   cursor:pointer;
 }
-.request{
+.request, .responseResult{
   height:24px;
   line-height:24px;
   width: 82%;
