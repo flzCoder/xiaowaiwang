@@ -144,7 +144,11 @@ export default {
   font-size: 15px;
 }
 .total .replaybtn {
-  height: 12px;
+  font-size: 12px;
+  margin-top: -2px;
+}
+.total .replaybtn a{
+  margin: 0 2px;
 }
 .total .request, .total .responseResult {
   height: 16px;
