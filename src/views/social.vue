@@ -16,6 +16,14 @@
         </template>
       </ul>
     </div>
+    <div class="rec" v-show='reclist.length'>
+      <h3>推荐好友</h3>
+      <ul class='friendStatus recommendFriend'>
+        <template v-for="(item, i) in reclist">
+          <social-card :key="i" :item-data="item" :type='"rec"'></social-card>
+        </template>
+      </ul>
+    </div>
     <div class="applying" v-if='applyinglist.length && false'>
       <h3>主动申请好友</h3>
       <ul class='friendStatus applyingFriend'>
@@ -48,14 +56,6 @@
         </template>
       </ul>
     </div>
-    <div class="rec" v-if='list.length && false'>
-      <h3>推荐好友</h3>
-      <ul class='friendStatus recommendFriend'>
-        <template v-for="(item, i) in list">
-          <social-card :key="i" :item-data="item" :type='"rec"'></social-card>
-        </template>
-      </ul>
-    </div>
   </div>
 </template>
 
@@ -74,6 +74,7 @@ export default {
   data() {
     return {
       title: '寻找好友',
+      reclist: [],
       applytotallist: [],
       applyedlist: [],
       applyinglist: [],
@@ -123,11 +124,28 @@ export default {
           return item.status === 0 && item.friendid !== this.info.id;
         });
         this.refuselist = socialData.filter(item => {
-          return item.status === 2 && item.friendid !== this.info.id;;
+          return item.status === 2 && item.friendid !== this.info.id;
         });
         this.blocklist = socialData.filter(item => {
-          return item.status === 3 && item.friendid !== this.info.id;;
+          return item.status === 3 && item.friendid !== this.info.id;
         });
+        let socialedlist = [this.info.id];
+        socialData.filter(item => {
+          if (item.status !== 2) {
+            if (item.friendid === this.info.id) {
+              socialedlist.push(item.userid);
+            } else if (item.userid === this.info.id) {
+              socialedlist.push(item.friendid);
+            }
+          }
+        });
+        socialedlist = [...new Set(socialedlist)];
+        this.reclist = this.list.filter((item,index,arr) => {
+          let temp = socialedlist.find(id => {
+            return id === item.id;
+          })
+          return !temp;
+        })
       })
       .catch((err) => {
         console.log(err);

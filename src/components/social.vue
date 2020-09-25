@@ -59,7 +59,11 @@ export default {
       if (this.type ==='req' && (this.itemData.friendid !== this.info.id) && (this.itemData.status === 0)) {
         this.applyedType = true;
       }
-      this.friendid = this.itemData.friendid === this.info.id ? this.itemData.userid : this.itemData.friendid;
+      if (this.type ==='rec') {
+        this.friendid = this.itemData.id;
+      } else {
+        this.friendid = this.itemData.friendid === this.info.id ? this.itemData.userid : this.itemData.friendid;
+      }
       this.applystyle = !!(this.itemData.friendid === this.info.id);
     },
     dealapplying() {
