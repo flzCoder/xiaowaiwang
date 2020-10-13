@@ -8,7 +8,7 @@ const originConfig = {
   production: {
     protocal: 'http',
     domain: '',
-    ip: '47.93.34.232',
+    ip: '182.92.163.121',
     port: '8088'
   }
 }
