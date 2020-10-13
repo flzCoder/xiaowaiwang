@@ -15,7 +15,8 @@ usage()
     echo "push: 推入github文件"
     echo "deploy: 在项目目录 pull build stop online"
     echo "login: 登录阿里云主机"
-    echo "exportDB: 导出线上数据库"
+    echo "exportDB: 导出数据库"
+    echo "importDB: 导入数据库"
     exit 1
 }
 start(){
@@ -54,7 +55,7 @@ exportDB(){
     mysqldump -h127.0.0.1 -uroot -proot -P3306 xiaowaiwang > xiaowaiwang.sql
 }
 importDB(){
-    mysqldump -h127.0.0.1 -uroot -proot -P3306 < xiaowaiwang.sql
+    mysql -h127.0.0.1 -uroot -proot -P3306 xiaowaiwang --default-character-set=utf8 < xiaowaiwang.sql
 }
 if [ $# -eq 0 ]; then
     usage;
