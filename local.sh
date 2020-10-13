@@ -48,10 +48,13 @@ deploy(){
     online;
 }
 login(){
-    ssh root@47.93.34.232 -p22
+    ssh root@182.92.163.121 -p22
 }
 exportDB(){
-    mysqldump -h127.0.0.1 -uroot -proot -P3306 netease_news > netease_news.sql
+    mysqldump -h127.0.0.1 -uroot -proot -P3306 xiaowaiwang > xiaowaiwang.sql
+}
+importDB(){
+    mysqldump -h127.0.0.1 -uroot -proot -P3306 < xiaowaiwang.sql
 }
 if [ $# -eq 0 ]; then
     usage;
