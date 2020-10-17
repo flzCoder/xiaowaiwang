@@ -29,7 +29,8 @@ export function createRouter () {
       { path: '/message', name:'message', component: message },
       { path: '/login', name:'login', component: login },
       { path: '/register', name:'register', component: register },
-      { path: '/', redirect: '/message' }
+      { path: '/', name:'message', component: message },
+      { path: '*', redirect: '/' }
     ]
   })
 }
