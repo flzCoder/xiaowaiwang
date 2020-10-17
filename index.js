@@ -80,6 +80,16 @@ const serve = (path, cache) => express.static(resolve(path), {
   maxAge: cache && isProd ? 1000 * 60 * 60 * 24 * 30 : 0
 })
 
+// 自定义跨域中间件
+var allowCors = function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', req.headers.origin);
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  res.header('Access-Control-Allow-Credentials','true');
+  next();
+};
+app.use(allowCors);//使用跨域中间件
+
 app.use(cookieParser('123456'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extend:false}))

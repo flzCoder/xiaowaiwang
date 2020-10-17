@@ -22,6 +22,7 @@
 import { EventBus } from './store/eventBus'
 import { prefixPath } from './originConfig'
 import axios from 'axios'
+axios.defaults.withCredentials = true;
 
 export default {
   data() {
@@ -40,7 +41,9 @@ export default {
   beforeMount() {
   },
   mounted() {
-    axios.get(`${prefixPath}/getInfo`)
+    axios.get(`${prefixPath}/getInfo`, {
+      withCredentials: true
+    })
     .then((res) =>{
       let data = res.data;
       if (data.code === 200) {
@@ -76,7 +79,9 @@ export default {
   },
   methods: {
     logout() {
-      axios.get(`${prefixPath}/logout`)
+      axios.get(`${prefixPath}/logout`, {
+        withCredentials: true
+      })
       .then((res) =>{
         let data = res.data;
         if (data.code === 200) {

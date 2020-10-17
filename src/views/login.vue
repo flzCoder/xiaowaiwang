@@ -20,6 +20,7 @@
 
 <script>
 import axios from 'axios'
+axios.defaults.withCredentials = true;
 import { prefixPath } from '../originConfig'
 import { EventBus } from '../store/eventBus'
 
