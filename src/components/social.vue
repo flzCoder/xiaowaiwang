@@ -4,7 +4,7 @@
       <img class="avator" :src="itemData.avator" alt=""/>
     </div>
     <div class="info">
-      <div class="nickname">姓名：<span v-text="itemData.name"></span></div>
+      <div class="nickname">姓名：<span class='nickname' v-text="itemData.name"></span></div>
       <div class="num">编号：<span v-text="friendid"></span></div>
     </div>
     <div class="btntips">
@@ -132,6 +132,11 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.nickname {
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
 .card {
   float:left;
   width:148px;
