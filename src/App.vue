@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <h3 class="website"><span>FUNNY</span>中国人必备的PC社交网络</h3>
-    <ul class='nav'>
+    <!-- <h3 class="website"><span>FUNNY</span>中国人必备的PC社交网络</h3> -->
+    <h3 class="website">快乐天地-快乐旺旺乐翻天</h3>
+    <!-- <ul class='nav'>
       <router-link :to="'./message'" v-show="true"><li><span>新鲜事</span></li></router-link>
       <router-link :to="'./user'" v-show="isloged.mine"><li><span>个人主页</span></li></router-link>
       <router-link :to="'./index'" v-show="false"><li>首页</li></router-link>
@@ -10,8 +11,11 @@
       <router-link :to="'./info'" class="infoNav" v-show="isloged.mine"><li><span>欢迎您:{{info.name}}</span></li></router-link>
       <router-link :to="'./register'"><li class="register"><span v-show="isloged.btn">注册</span></li></router-link>
       <router-link :to="'./login'"><li class="enroll"><span v-show="isloged.btn">登录</span><span v-show="isloged.mine" class="logout" @click.prevent='logout'>退出</span></li></router-link>
-    </ul>
-    <router-view class="view"></router-view>
+    </ul> -->
+    <!-- <router-view class="view"></router-view> -->
+    <div class='content'>
+      个人练习网站：快乐天地
+    </div>
     <div class="footer">
       <a href="http://beian.miit.gov.cn/" target="_blank">浙ICP备2020032336号</a>
     </div>
