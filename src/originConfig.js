@@ -7,7 +7,7 @@ const originConfig = {
   },
   production: {
     protocal: 'http',
-    domain: '',
+    domain: 'www.fengluzhe.shop',
     ip: '182.92.163.121',
     port: '8088'
   }
