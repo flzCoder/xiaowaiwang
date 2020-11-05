@@ -51,7 +51,7 @@ export default {
               id: self.info.id,
               delid: id
             })
-          } else if (path === '/message') {
+          } else if (path === '/message' || path === '/') {
             self.$store.commit('deleteMessageItem', {
               id: 'message',
               delid: id
