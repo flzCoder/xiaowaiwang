@@ -74,7 +74,7 @@ export default {
                   id: response.data.id
                 }
               })
-            } else if (path === '/message') {
+            } else if (path === '/message' || path === '/') {
               self.$store.commit('pushMessageItem', {
                 id: 'message',
                 item:{
