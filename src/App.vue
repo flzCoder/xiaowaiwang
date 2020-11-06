@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h3 class="website"><span>FUNNY</span>中国人必备的PC社交网络</h3>
+    <h3 class="website"><span><a href="/">FUNNY</a></span><i>中国人必备的PC社交网络</i></h3>
     <ul class='nav'>
       <router-link :to="'./message'" v-show="true"><li><span>新鲜事</span></li></router-link>
       <router-link :to="'./user'" v-show="isloged.mine"><li><span>个人主页</span></li></router-link>
@@ -130,7 +130,9 @@ export default {
 
 <style lang="stylus">
   *{margin:0;padding:0;}
+  a{text-decoration:none;}
   .website{padding: 3px 0 12px 0; color:#1e3e23;}
+  .website i{font-style:normal;cursor:default;}
   .website span{margin-right:20px; font-size:30px;}
   #app {
     width:980px;
