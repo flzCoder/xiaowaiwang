@@ -128,6 +128,7 @@ export default {
             item: ''
           })
         }
+        this.$router.push('./message')
       })
       .catch((err) => {})
     }
