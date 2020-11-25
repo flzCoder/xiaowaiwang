@@ -8,7 +8,7 @@
         <input type="text" name="nickname" v-model="nickname" id="nickname">
       </li>
       <li class="avator">
-        <label for="avator">头像<span>上传图片</span></label>
+        <label for="avator">头像<span>上传头像</span></label>
         <input type="file" name="avator" id='avator' value="avator" v-show="false">
         <br />
         <img class="preview" :src="avator" alt=""/>
