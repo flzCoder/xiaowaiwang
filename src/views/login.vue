@@ -60,6 +60,10 @@ export default {
             id: 'id',
             item: res.data.id
           })
+          this.$store.commit('setInfo', {
+            id: 'mobilephone',
+            item: res.data.mobilephone
+          })
           this.$store.commit('setLoged', {
             mine: true,
             btn: false

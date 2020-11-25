@@ -10,6 +10,8 @@ select a.*,b.name from message a left join user b on a.userid = b.id;
 alter table wap3g_news add column create_time timestamp default value;
 ALTER TABLE message ADD column userid int(11);
 ALTER TABLE user ADD column avator varchar(2024) NOT NULL COMMENT '头像'
+ALTER TABLE user ADD column mobilephone varchar(11) NOT NULL default 18800188992 COMMENT '手机号'
+
 alter table message drop column name;
 ALTER TABLE social ALTER status SET DEFAULT 0;
 

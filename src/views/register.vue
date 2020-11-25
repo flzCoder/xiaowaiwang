@@ -72,6 +72,10 @@ export default {
               item: data.data.avator
             })
             this.$store.commit('setInfo', {
+              id: 'mobilephone',
+              item: data.data.mobilephone
+            })
+            this.$store.commit('setInfo', {
               id: 'id',
               item: data.data.insertId
             })
