@@ -4,6 +4,8 @@ INSERT INTO user ( name, password, avator ) VALUES ( 'f77', '94f186bda48c0fecfa6
 DELETE FROM wap3g_news;
 UPDATE message SET name = '';
 UPDATE social SET status = 1 WHERE title = '长三角一体化发展如何推进？习近平再次强调两个关键词';
+UPDATE user SET name = 'guest',mobilephone = 666 WHERE id = 10032
+
 select * from wap3g_news;
 select a.*,b.name from message a left join user b on a.userid = b.id;
 

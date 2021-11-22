@@ -1,6 +1,6 @@
 module.exports = {
   production:{
-    host: '182.92.163.121',
+    host: '82.157.148.14',
     port: '3306',
     user: 'root',
     password: 'root',

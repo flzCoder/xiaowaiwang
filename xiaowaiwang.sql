@@ -30,7 +30,7 @@ CREATE TABLE `message` (
   `status` int(11) DEFAULT '1',
   `userid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=166 DEFAULT CHARSET=utf8 COMMENT='¸úÌû±í';
+) ENGINE=InnoDB AUTO_INCREMENT=169 DEFAULT CHARSET=utf8 COMMENT='¸úÌû±í';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `message` (
 
 LOCK TABLES `message` WRITE;
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` VALUES (143,'http://flz.mudan.com:8088/public/img/d5f23420-f7db-11ea-a0e7-39835cf24ef0.jpg','11','2020-09-16 05:16:55',1,10015),(154,'','879','2020-09-16 15:12:21',1,10027),(157,'http://flz.mudan.com:8088/public/img/2a6d6560-f886-11ea-872d-f13a9d510561.jpg','','2020-09-17 01:36:11',1,10015);
+INSERT INTO `message` VALUES (143,'http://flz.mudan.com:8088/public/img/d5f23420-f7db-11ea-a0e7-39835cf24ef0.jpg','11','2020-09-16 05:16:55',1,10015),(154,'','879','2020-09-16 15:12:21',1,10027),(157,'http://flz.mudan.com:8088/public/img/2a6d6560-f886-11ea-872d-f13a9d510561.jpg','','2020-09-17 01:36:11',1,10015),(158,'http://flz.mudan.com:8088/public/img/e9fe21a0-107b-11eb-9eec-dfb8c9d36949.jpg','哈哈哈','2020-10-17 13:23:20',1,10015),(159,'http://flz.mudan.com:8088/public/img/8770c6e0-1f72-11eb-b4e4-0748201e634d.jpg','111','2020-11-05 14:23:54',2,10032),(160,'http://flz.mudan.com:8088/public/img/837a9100-1f73-11eb-b4e4-0748201e634d.jpg','都是','2020-11-05 14:30:56',2,10032),(161,'','都是','2020-11-05 14:31:17',2,10032),(162,'http://flz.mudan.com:8088/public/img/9fa6c920-1f73-11eb-b4e4-0748201e634d.jpg','鹅鹅鹅我','2020-11-05 14:31:44',2,10032),(163,'','1','2020-11-05 14:40:35',2,10032),(164,'','2','2020-11-05 14:40:37',2,10032),(165,'http://flz.mudan.com:8088/public/img/e1691600-1f74-11eb-b4e4-0748201e634d.jpg','3','2020-11-05 14:40:43',2,10032),(166,'http://flz.mudan.com:8088/public/img/e51db990-1f74-11eb-b4e4-0748201e634d.jpg','4','2020-11-05 14:40:49',2,10032),(167,'http://flz.mudan.com:8088/public/img/e82d1c70-1f74-11eb-b4e4-0748201e634d.jpg','5','2020-11-05 14:40:54',2,10032),(168,'http://flz.mudan.com:8088/public/img/ec5605a0-1f74-11eb-b4e4-0748201e634d.jpg','6','2020-11-05 14:41:02',2,10032);
 /*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +87,7 @@ CREATE TABLE `social` (
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'ÐÞ¸ÄÊ±¼ä',
   PRIMARY KEY (`id`),
   UNIQUE KEY `userid` (`userid`,`friendid`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COMMENT='ºÃÓÑ¹ØÏµ±í';
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COMMENT='ºÃÓÑ¹ØÏµ±í';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,7 +96,7 @@ CREATE TABLE `social` (
 
 LOCK TABLES `social` WRITE;
 /*!40000 ALTER TABLE `social` DISABLE KEYS */;
-INSERT INTO `social` VALUES (32,10029,10015,1,'2020-09-22 02:57:54'),(34,10029,10026,1,'2020-09-22 06:09:12'),(35,10029,10025,2,'2020-09-22 06:09:25'),(36,10029,10023,3,'2020-09-22 06:09:43'),(37,10028,10029,1,'2020-09-22 06:39:50'),(38,10027,10029,0,'2020-09-22 07:33:06'),(39,10015,10024,2,'2020-09-22 15:10:16'),(40,10028,10015,0,'2020-09-26 11:13:01');
+INSERT INTO `social` VALUES (32,10029,10015,1,'2020-09-22 02:57:54'),(34,10029,10026,1,'2020-09-22 06:09:12'),(35,10029,10025,2,'2020-09-22 06:09:25'),(36,10029,10023,3,'2020-09-22 06:09:43'),(37,10028,10029,1,'2020-09-22 06:39:50'),(38,10027,10029,0,'2020-09-22 07:33:06'),(39,10015,10024,2,'2020-09-22 15:10:16'),(40,10028,10015,0,'2020-09-26 11:13:01'),(41,10031,10032,0,'2020-11-22 08:29:49');
 /*!40000 ALTER TABLE `social` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,7 +118,7 @@ CREATE TABLE `socialold` (
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'ÐÞ¸ÄÊ±¼ä',
   PRIMARY KEY (`id`),
   UNIQUE KEY `userid` (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COMMENT='ºÃÓÑ¹ØÏµ±í';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='ºÃÓÑ¹ØÏµ±í';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -143,8 +143,9 @@ CREATE TABLE `user` (
   `password` varchar(2024) NOT NULL COMMENT 'ÃÜÂë',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'ÐÞ¸ÄÊ±¼ä',
   `avator` varchar(2024) NOT NULL COMMENT 'Í·Ïñ',
+  `mobilephone` varchar(11) NOT NULL DEFAULT '18800188992' COMMENT 'ÊÖ»úºÅ',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10030 DEFAULT CHARSET=utf8 COMMENT='ÓÃ»§±í';
+) ENGINE=InnoDB AUTO_INCREMENT=10033 DEFAULT CHARSET=utf8 COMMENT='ÓÃ»§±í';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -153,7 +154,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (10015,'flz888','94f186bda48c0fecfa6fffcabe472776','2020-09-16 05:16:44','http://flz.mudan.com:8088/public/avator/2.jpg'),(10016,'f1','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:11:40','http://flz.mudan.com:8088/public/avator/1.jpg'),(10017,'f2','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:11:55','http://flz.mudan.com:8088/public/avator/2.jpg'),(10018,'f3','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:12:10','http://flz.mudan.com:8088/public/avator/3.jpg'),(10019,'f4','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:12:24','http://flz.mudan.com:8088/public/avator/4.jpg'),(10020,'f5','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:12:38','http://flz.mudan.com:8088/public/avator/5.jpg'),(10021,'f6','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:12:50','http://flz.mudan.com:8088/public/avator/6.jpg'),(10022,'f7','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:13:01','http://flz.mudan.com:8088/public/avator/7.jpg'),(10023,'f8','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:13:11','http://flz.mudan.com:8088/public/avator/8.jpg'),(10024,'f9','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:13:22','http://flz.mudan.com:8088/public/avator/9.jpg'),(10025,'f10','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:13:31','http://flz.mudan.com:8088/public/avator/10.jpg'),(10026,'f11','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:13:44','http://flz.mudan.com:8088/public/avator/11.jpg'),(10027,'f99','94f186bda48c0fecfa6fffcabe472776','2020-09-16 15:12:16','http://flz.mudan.com:8088/public/avator/8.jpg'),(10028,'p100','94f186bda48c0fecfa6fffcabe472776','2020-09-16 15:14:18','http://flz.mudan.com:8088/public/avator/1.jpg'),(10029,'flz123','94f186bda48c0fecfa6fffcabe472776','2020-09-17 15:11:04','http://flz.mudan.com:8088/public/avator/1.jpg');
+INSERT INTO `user` VALUES (10015,'flz888','94f186bda48c0fecfa6fffcabe472776','2020-09-16 05:16:44','http://flz.mudan.com:8088/public/avator/2.jpg','18800188992'),(10016,'f1','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:11:40','http://flz.mudan.com:8088/public/avator/1.jpg','18800188992'),(10017,'f2','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:11:55','http://flz.mudan.com:8088/public/avator/2.jpg','18800188992'),(10018,'f3','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:12:10','http://flz.mudan.com:8088/public/avator/3.jpg','18800188992'),(10019,'f4','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:12:24','http://flz.mudan.com:8088/public/avator/4.jpg','18800188992'),(10020,'f5','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:12:38','http://flz.mudan.com:8088/public/avator/5.jpg','18800188992'),(10021,'f6','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:12:50','http://flz.mudan.com:8088/public/avator/6.jpg','18800188992'),(10022,'f7','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:13:01','http://flz.mudan.com:8088/public/avator/7.jpg','18800188992'),(10023,'f8','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:13:11','http://flz.mudan.com:8088/public/avator/8.jpg','18800188992'),(10024,'f9','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:13:22','http://flz.mudan.com:8088/public/avator/9.jpg','18800188992'),(10025,'f10','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:13:31','http://flz.mudan.com:8088/public/avator/10.jpg','18800188992'),(10026,'f11','94f186bda48c0fecfa6fffcabe472776','2020-09-16 14:13:44','http://flz.mudan.com:8088/public/avator/11.jpg','18800188992'),(10027,'f99','94f186bda48c0fecfa6fffcabe472776','2020-09-16 15:12:16','http://flz.mudan.com:8088/public/avator/8.jpg','18800188992'),(10028,'p100','94f186bda48c0fecfa6fffcabe472776','2020-09-16 15:14:18','http://flz.mudan.com:8088/public/avator/1.jpg','18800188992'),(10029,'flz123','94f186bda48c0fecfa6fffcabe472776','2020-09-17 15:11:04','http://flz.mudan.com:8088/public/avator/1.jpg','18800188992'),(10030,'flz666','94f186bda48c0fecfa6fffcabe472776','2020-10-17 08:50:20','http://flz.mudan.com:8088/public/avator/2.jpg','18800188992'),(10031,'flz999','94f186bda48c0fecfa6fffcabe472776','2020-10-17 08:54:25','http://flz.mudan.com:8088/public/avator/2.jpg','18800188992'),(10032,'guest','94f186bda48c0fecfa6fffcabe472776','2020-11-05 14:06:35','http://flz.mudan.com:8088/public/avator/6272fdf0-548c-11eb-be0c-473fa211fd11.jpg','18800188992');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -166,4 +167,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-13 14:40:00
+-- Dump completed on 2021-11-22 20:23:00

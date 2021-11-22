@@ -49,7 +49,7 @@ deploy(){
     online;
 }
 login(){
-    ssh root@182.92.163.121 -p22
+    ssh root@82.157.148.14 -p22
 }
 exportDB(){
     mysqldump -h127.0.0.1 -uroot -proot -P3306 xiaowaiwang > xiaowaiwang.sql

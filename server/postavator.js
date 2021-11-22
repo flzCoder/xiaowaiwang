@@ -14,14 +14,14 @@ router.use((req, res, next) => {
   form.parse(req, function(err, fields, files) {
     var file = files.files;
     form.encoding = 'utf-8';
-    form.uploadDir = "public/img";
+    form.uploadDir = "public/avator";
     form.keepExtensions = true;
     form.maxFieldsSize = 5 * 1024 * 1024;
     let picName = uuid.v1() + path.extname(file.name);
     let sysType = os.type();
-    let pathtmp = 'public\/img\/';
+    let pathtmp = 'public\/avator\/';
     if(sysType==="Windows_NT"){
-      pathtmp = 'public\\img\\';
+      pathtmp = 'public\\avator\\';
     }
     fs.rename(file.path, pathtmp + picName, function(err) {
       if (err) return res.send({
