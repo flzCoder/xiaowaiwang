@@ -7,7 +7,8 @@ const originConfig = {
   },
   production: {
     protocal: 'http',
-    domain: 'www.fengluzhe.cn',
+    // domain: 'www.fengluzhe.cn',
+    domain: '82.157.148.14',
     ip: '82.157.148.14',
     port: '8088'
   }
