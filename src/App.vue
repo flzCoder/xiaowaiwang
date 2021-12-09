@@ -18,11 +18,11 @@
       个人练习网站：快乐天地
     </div> -->
 
-    <div class="footer" style="display:none">
-      <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802033256" target="_blank">京公网安备11010802033256号</a>
+    <div class="footer">
+      <a  style="display:none" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802033256" target="_blank">京公网安备11010802033256号</a>
       <br />
       <br />
-      <a href="http://beian.miit.gov.cn/" target="_blank">浙ICP备2020032336号</a>
+      <a href="http://beian.miit.gov.cn/" target="_blank">浙ICP备2020032336号-2</a>
       <br />
       <br />
       <br />
