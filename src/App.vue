@@ -18,7 +18,7 @@
       个人练习网站：快乐天地
     </div> -->
 
-    <div class="footer">
+    <div class="footer" style="display:none">
       <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802033256" target="_blank">京公网安备11010802033256号</a>
       <br />
       <br />
