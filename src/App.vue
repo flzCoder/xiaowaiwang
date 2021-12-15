@@ -36,7 +36,6 @@ import { prefixPath } from './originConfig'
 import cookie from './util/cookie'
 import axios from 'axios'
 axios.defaults.withCredentials = true;
-
 export default {
   data() {
     return {

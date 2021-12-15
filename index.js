@@ -122,6 +122,9 @@ app.delete('/deleteMessage/:id', deleteMessageService)
 app.use(microcache.cacheSeconds(1, req => useMicroCache && req.originalUrl))
 
 function render (req, res) {
+  let host = req.headers.host
+  console.log(666,host);
+
   const s = Date.now()
 
   res.setHeader("Content-Type", "text/html")
