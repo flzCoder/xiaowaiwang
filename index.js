@@ -122,7 +122,7 @@ app.delete('/deleteMessage/:id', deleteMessageService)
 app.use(microcache.cacheSeconds(1, req => useMicroCache && req.originalUrl))
 
 function render (req, res) {
-  let host = req.headers.host
+  let host = req
   console.log(666,host);
 
   const s = Date.now()
@@ -163,6 +163,7 @@ function render (req, res) {
 }
 
 app.get('*', isProd ? render : (req, res) => {
+  console.log(333,req);
   readyPromise.then(() => render(req, res))
 })
 
