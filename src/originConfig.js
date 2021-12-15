@@ -15,7 +15,6 @@ let originConfig = {
 let originInfo = originConfig[process.env.NODE_ENV]
 let host = originInfo.domain ? originInfo.domain : originInfo.ip;
 let prefixPath = `${originInfo.protocal}://${host}:${originInfo.port}`
-console.log(777,process.env.hostname,prefixPath);
 
 export { prefixPath };
 export default originConfig;

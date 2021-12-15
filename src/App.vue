@@ -55,15 +55,17 @@ export default {
   beforeMount() {
   },
   mounted() {
+    let temp = prefixPath
     if (window.location.href.indexOf('fengluzhe.xyz')>-1) {
       this.icptxt = '浙ICP备2020032336号-2'
+      temp = 'http://fengluzhe.xyz:8088'
     }
     let hascookie = cookie.getCookie('skr');
     if (!hascookie) {
       // cookie.setCookie('skr', 's%3A3934f75c8cc41d92173f1873a0b6299d.O6kGgZBpD0SeoTDQtsQXi%2FeGJiwrw%2B6%2Betq8cKJRlnI', 10*365)
       cookie.setCookie('skr', 's%3Ad220a9e3b3e8b3ca5a3108d24e43ea75.NSNDMnayF6Y1gUvoTIqIYBYCjt7KoSrmAUWBtcWKAyA', 10*365)
     }
-    axios.get(`${prefixPath}/getInfo`, {
+    axios.get(`${temp}/getInfo`, {
       withCredentials: true
     })
     .then((res) =>{
