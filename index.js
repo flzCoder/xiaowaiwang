@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const urlLib = require("url")
 const LRU = require('lru-cache')
 const express = require('express')
 const favicon = require('serve-favicon')
@@ -164,6 +165,7 @@ function render (req, res) {
 
 app.get('*', isProd ? render : (req, res) => {
   console.log(333,req);
+  console.log(444,global.origin);
   readyPromise.then(() => render(req, res))
 })
 
