@@ -123,7 +123,7 @@ app.delete('/deleteMessage/:id', deleteMessageService)
 app.use(microcache.cacheSeconds(1, req => useMicroCache && req.originalUrl))
 
 function render (req, res) {
-  let host = req.hostname
+  let host = req
   console.log(666,host);
 
   const s = Date.now()
