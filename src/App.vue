@@ -22,7 +22,7 @@
       <a  style="display:none" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802033256" target="_blank">京公网安备11010802033256号</a>
       <br />
       <br />
-      <a href="http://beian.miit.gov.cn/" target="_blank">浙ICP备2020032336号-3</a>
+      <a href="http://beian.miit.gov.cn/" target="_blank" v-text="icptxt"></a>
       <br />
       <br />
       <br />
@@ -39,7 +39,9 @@ axios.defaults.withCredentials = true;
 
 export default {
   data() {
-    return {}
+    return {
+      icptxt: '浙ICP备2020032336号-3'
+    }
   },
   computed: {
     info () {
@@ -54,6 +56,9 @@ export default {
   beforeMount() {
   },
   mounted() {
+    if (window.location.href.indexOf('fengluzhe.xyz')>-1) {
+      this.icptxt = '浙ICP备2020032336号-2'
+    }
     let hascookie = cookie.getCookie('skr');
     if (!hascookie) {
       // cookie.setCookie('skr', 's%3A3934f75c8cc41d92173f1873a0b6299d.O6kGgZBpD0SeoTDQtsQXi%2FeGJiwrw%2B6%2Betq8cKJRlnI', 10*365)
