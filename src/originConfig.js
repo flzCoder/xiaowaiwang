@@ -1,4 +1,4 @@
-const originConfig = {
+let originConfig = {
   development: {
     protocal: 'http',
     domain: 'flz.mudan.com',
@@ -7,15 +7,14 @@ const originConfig = {
   },
   production: {
     protocal: 'http',
-    domain: process.env.hostname.indexOf('.xyz')>-1 ? 'fengluzhe.xyz': 'fengluzhe.cn',
-    // domain: '82.157.148.14',
+    domain: 'fengluzhe.cn',
     ip: '82.157.148.14',
     port: '8088'
   }
 }
 let originInfo = originConfig[process.env.NODE_ENV]
 let host = originInfo.domain ? originInfo.domain : originInfo.ip;
-const prefixPath = `${originInfo.protocal}://${host}:${originInfo.port}`
+let prefixPath = `${originInfo.protocal}://${host}:${originInfo.port}`
 console.log(777,process.env.hostname,prefixPath);
 
 export { prefixPath };
