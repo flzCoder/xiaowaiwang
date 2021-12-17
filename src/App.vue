@@ -19,7 +19,7 @@
     </div> -->
 
     <div class="footer">
-      <a  style="display:none" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802033256" target="_blank">京公网安备11010802033256号</a>
+      <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802038349" target="_blank">京公网安备11010802038349号</a>
       <br />
       <br />
       <a href="http://beian.miit.gov.cn/" target="_blank" v-text="icptxt"></a>
